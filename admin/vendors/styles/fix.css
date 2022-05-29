@@ -48,3 +48,17 @@
 .tab-wizard2 {
     display: relative;
 }
+
+.login-box {
+    max-width: 450px;
+}
+
+.register-page-wrap .login-box {
+    max-width: 800px;
+}
+
+@media screen and (max-width:768px) {
+    .register-page-wrap .login-box {
+        max-width: 450px;
+    }
+}
