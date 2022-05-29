@@ -1,3 +1,19 @@
 header .logoholder {
-    width: 40px;
+    padding: 1px;
+}
+
+header .logoholder img {
+    width: 75px;
+}
+
+header .logoholder span {
+    font-size: 22px;
+    padding: 2px;
+    color: #1b00ff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+header.sticky nav {
+    margin-top: 13px;
 }

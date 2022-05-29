@@ -238,7 +238,7 @@ header * {
 }
 
 header.sticky {
-    padding: 10px 0;
+    padding: 2px 0;
 }
 
 header.sticky img {
@@ -906,7 +906,6 @@ footer .copyright {
     }
     header .logoholder {
         width: 100%;
-        display: block;
         text-align: center;
     }
     header nav {
