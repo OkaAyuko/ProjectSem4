@@ -1,0 +1,50 @@
+.left-side-bar .brand-logo .light-logo {
+    width: 65px;
+    padding: 6px;
+}
+
+.login-page .brand-logo img,
+.login-header .brand-logo img {
+    width: 90px;
+    padding: 6px;
+}
+
+.left-side-bar .brand-logo span {
+    font-size: 16px;
+    padding: 3px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.login-page .brand-logo span,
+.login-header .brand-logo span {
+    font-size: 18px;
+    padding: 3px;
+    text-transform: uppercase;
+    color: #1b00ff;
+    font-weight: 800;
+}
+
+.action-center button {
+    font-size: 12px;
+}
+
+.login-menu ul li a {
+    border: 1.6px solid #1b00ff;
+    padding: 10px 14px;
+    font-size: 18px;
+    border-radius: 0.3rem;
+}
+
+.login-menu ul li a:hover {
+    background-color: #1b00ff;
+    color: #fff;
+}
+
+.modal-content .modal-body .text-center img {
+    width: 80px;
+}
+
+.tab-wizard2 {
+    display: relative;
+}
