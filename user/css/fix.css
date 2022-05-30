@@ -17,3 +17,32 @@ header .logoholder span {
 header.sticky nav {
     margin-top: 13px;
 }
+
+.contact .fa-home {
+    color: #ff4949;
+}
+
+.contact .fa-phone {
+    color: #83BD75;
+}
+
+.contact .fa-globe {
+    color: #1b00ff;
+}
+
+.contact .fa-briefcase {
+    color: #ff8d29;
+}
+
+footer {
+    background-color: #031e23;
+    color: #fff;
+}
+
+footer .fa-ul li a:hover {
+    color: #fff;
+}
+
+footer .copyright a {
+    color: #fff;
+}
