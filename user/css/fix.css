@@ -2,7 +2,8 @@ nav .navbar-brand h4 img {
     width: 70px;
 }
 
-.fa-github {
+.fa-github,
+.profile .fa-address-card {
     color: #202020 !important;
 }
 
@@ -10,12 +11,22 @@ nav .navbar-brand h4 img {
     color: #14C38E !important;
 }
 
-.fa-twitter {
+.fa-twitter,
+.profile .fa-address-book {
     color: #87ceeb !important;
 }
 
-.fa-youtube {
+.fa-youtube,
+.profile .fa-user {
     color: #dc3545 !important;
+}
+
+.profile .fa-envelope {
+    color: #FAC213 !important;
+}
+
+.profile .fa-calendar-alt {
+    color: #1b00ff !important;
 }
 
 
@@ -57,6 +68,41 @@ nav .navbar-brand h4 img {
 
 .carousel-inner .img-fluid {
     max-width: 80%;
+}
+
+.profile h5 .profile-text {
+    font-weight: 400;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 18px;
+}
+
+.profile .qrcode {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50%;
+}
+
+.badge {
+    padding: 0.75em;
+    display: inline-block;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+
+.tab-pane th {
+    color: #1b00ff;
+    font-family: var(--bs-font-sans-serif);
 }
 
 
