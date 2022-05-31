@@ -1,48 +1,68 @@
-header .logoholder {
-    padding: 1px;
+nav .navbar-brand h4 img {
+    width: 70px;
 }
 
-header .logoholder img {
-    width: 75px;
+.fa-github {
+    color: #202020 !important;
 }
 
-header .logoholder span {
-    font-size: 22px;
-    padding: 2px;
-    color: #1b00ff;
-    font-weight: 700;
-    text-transform: uppercase;
+.fa-phone-alt {
+    color: #14C38E !important;
 }
 
-header.sticky nav {
-    margin-top: 13px;
+.fa-twitter {
+    color: #87ceeb !important;
 }
 
-.contact .fa-home {
-    color: #ff4949;
+.fa-youtube {
+    color: #dc3545 !important;
 }
 
-.contact .fa-phone {
-    color: #83BD75;
+.navbar .megamenu {
+    padding: 1rem;
 }
 
-.contact .fa-globe {
-    color: #1b00ff;
+.navbar .megamenu-title {
+    padding: 0.25rem 1rem;
+    border-bottom: 1px solid #1b00ff;
 }
 
-.contact .fa-briefcase {
-    color: #ff8d29;
+.navbar .megamenu img {
+    width: 100%;
+    height: auto;
 }
 
-footer {
-    background-color: #031e23;
-    color: #fff;
+.navbar .megamenu .ios-android {
+    padding: 6px;
+    width: 140px;
 }
 
-footer .fa-ul li a:hover {
-    color: #fff;
+
+/* ============ desktop view ============ */
+
+@media all and (min-width: 992px) {
+    .navbar .has-megamenu {
+        position: static!important;
+    }
+    .navbar .megamenu {
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin-top: 0;
+    }
 }
 
-footer .copyright a {
-    color: #fff;
+
+/* ============ desktop view .end// ============ */
+
+
+/* ============ mobile view ============ */
+
+@media(max-width: 991px) {
+    .navbar.fixed-top .navbar-collapse,
+    .navbar.sticky-top .navbar-collapse {
+        overflow-y: auto;
+        max-height: 90vh;
+        margin-top: 10px;
+    }
 }
