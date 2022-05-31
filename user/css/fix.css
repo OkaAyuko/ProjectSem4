@@ -18,6 +18,24 @@ nav .navbar-brand h4 img {
     color: #dc3545 !important;
 }
 
+
+/* .footer .fa-envelope {
+    color: #FAC213!important;
+} */
+
+.footer .btn-social {
+    background-color: #fff !important;
+    border: 1px solid #202020;
+}
+
+.footer .btn-social:hover {
+    background-color: #fff !important;
+}
+
+.footer .btn .fa-facebook-f {
+    color: #1b00ff !important;
+}
+
 .navbar .megamenu {
     padding: 1rem;
 }
@@ -37,17 +55,27 @@ nav .navbar-brand h4 img {
     width: 140px;
 }
 
+.carousel-inner .img-fluid {
+    max-width: 80%;
+}
+
 
 /* ============ desktop view ============ */
 
 @media all and (min-width: 992px) {
-    .navbar .has-megamenu {
+    .navbar .has-megamenu,
+    .navbar .has-user-menu {
         position: static!important;
     }
     .navbar .megamenu {
         left: 0;
         right: 0;
         width: 100%;
+        margin-top: 0;
+    }
+    .navbar .user-menu {
+        left: auto;
+        right: 0;
         margin-top: 0;
     }
 }
@@ -66,3 +94,5 @@ nav .navbar-brand h4 img {
         margin-top: 10px;
     }
 }
+
+@media screen and (max-width: 1200px) {}
