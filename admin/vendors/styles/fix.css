@@ -57,6 +57,11 @@
     max-width: 800px;
 }
 
+.form-control:disabled,
+.form-control:read-only {
+    background-color: #fff;
+}
+
 @media screen and (max-width:768px) {
     .register-page-wrap .login-box {
         max-width: 450px;

@@ -83,6 +83,10 @@ nav .navbar-brand h4 img {
     max-width: 50%;
 }
 
+.btn {
+    font-family: 'Inter', sans-serif;
+}
+
 .badge {
     padding: 0.75em;
     display: inline-block;
@@ -103,6 +107,15 @@ nav .navbar-brand h4 img {
 .tab-pane th {
     color: #1b00ff;
     font-family: var(--bs-font-sans-serif);
+}
+
+.form-control:disabled,
+.form-control:read-only {
+    background-color: #fff;
+}
+
+.form-control {
+    border-radius: 5px;
 }
 
 
@@ -141,4 +154,14 @@ nav .navbar-brand h4 img {
     }
 }
 
-@media screen and (max-width: 1200px) {}
+@media screen and (max-width: 991px) {
+    .profile .qrcode {
+        max-width: 30%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile .qrcode {
+        max-width: 50%;
+    }
+}
