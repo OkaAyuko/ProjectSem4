@@ -129,7 +129,6 @@ function getRouting() {
 
 }
 
-
 function getPosition(position) {
     var marker, circle;
     var lat = position.coords.latitude
