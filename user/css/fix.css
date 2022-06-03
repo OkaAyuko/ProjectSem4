@@ -81,6 +81,8 @@ nav .navbar-brand h4 img {
     margin-left: auto;
     margin-right: auto;
     max-width: 50%;
+    border: 1px solid #202020;
+    padding: 15px;
 }
 
 .btn {
@@ -154,13 +156,25 @@ nav .navbar-brand h4 img {
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .profile .qrcode {
+        max-width: 60%;
+    }
+}
+
 @media screen and (max-width: 991px) {
     .profile .qrcode {
-        max-width: 30%;
+        max-width: 40%;
     }
 }
 
 @media screen and (max-width: 768px) {
+    .profile .qrcode {
+        max-width: 40%;
+    }
+}
+
+@media screen and (max-width: 567px) {
     .profile .qrcode {
         max-width: 50%;
     }
