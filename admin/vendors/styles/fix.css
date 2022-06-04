@@ -65,7 +65,7 @@
 .qrcode {
     max-width: 50%;
     border: 1px solid #202020;
-    padding: 15px;
+    padding: 10px;
 }
 
 @media screen and (max-width:991px) {

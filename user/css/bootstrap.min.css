@@ -234,7 +234,7 @@ a {
 }
 
 a:hover {
-    color: #ad0f1d;
+    color: #0062cc;
 }
 
 a:not([href]):not([class]),
@@ -2033,7 +2033,9 @@ progress {
     background-color: #fff;
     /* border-color: #1b00ff; */
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(216, 19, 36, 0.25);
+    border-color: #1b00ff;
+    -webkit-box-shadow: 0 0 28px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 28px rgba(0, 0, 0, .1)
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -2265,7 +2267,6 @@ textarea.form-control-lg {
     background-size: contain;
     border: 1px solid rgba(0, 0, 0, 0.25);
     appearance: none;
-    color-adjust: exact;
 }
 
 .form-check-input[type="checkbox"] {
@@ -2841,7 +2842,8 @@ textarea.form-control.is-invalid {
 .btn-check:focus+.btn,
 .btn:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(216, 19, 36, 0.25);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
 .btn:disabled,
@@ -2859,16 +2861,17 @@ fieldset:disabled .btn {
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #0495c9;
-    border-color: #357ebd;
+    background-color: #1502bd;
+    border-color: #0062cc;
 }
 
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
     color: #fff;
-    background-color: #0495c9;
-    border-color: #357ebd;
-    box-shadow: 0 0 0 0.25rem #357ebd;
+    background-color: #1502bd;
+    border-color: #0062cc;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
 .btn-check:checked+.btn-primary,
@@ -2877,8 +2880,8 @@ fieldset:disabled .btn {
 .btn-primary.active,
 .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #ad0f1d;
-    border-color: #a20e1b;
+    background-color: #1502bd;
+    border-color: #0062cc;
 }
 
 .btn-check:checked+.btn-primary:focus,
@@ -2886,7 +2889,8 @@ fieldset:disabled .btn {
 .btn-primary:active:focus,
 .btn-primary.active:focus,
 .show>.btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.25rem rgba(222, 54, 69, 0.5);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
 .btn-primary:disabled,
@@ -4084,7 +4088,7 @@ fieldset:disabled .btn {
 
 .nav-link:hover,
 .nav-link:focus {
-    color: #ad0f1d;
+    color: #0062cc;
 }
 
 .nav-link.disabled {

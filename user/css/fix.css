@@ -1,6 +1,11 @@
+/* logo */
+
 nav .navbar-brand h4 img {
     width: 70px;
 }
+
+
+/* icon */
 
 .fa-github,
 .profile .fa-address-card {
@@ -30,9 +35,7 @@ nav .navbar-brand h4 img {
 }
 
 
-/* .footer .fa-envelope {
-    color: #FAC213!important;
-} */
+/* footer */
 
 .footer .btn-social {
     background-color: #fff !important;
@@ -46,6 +49,9 @@ nav .navbar-brand h4 img {
 .footer .btn .fa-facebook-f {
     color: #1b00ff !important;
 }
+
+
+/* navbar menu */
 
 .navbar .megamenu {
     padding: 1rem;
@@ -66,6 +72,9 @@ nav .navbar-brand h4 img {
     width: 140px;
 }
 
+
+/* qr code and form */
+
 .carousel-inner .img-fluid {
     max-width: 80%;
 }
@@ -76,13 +85,18 @@ nav .navbar-brand h4 img {
     font-size: 18px;
 }
 
-.profile .qrcode {
+.profile .col-qrcode .qrcode {
     display: block;
     margin-left: auto;
     margin-right: auto;
     max-width: 50%;
     border: 1px solid #202020;
-    padding: 15px;
+    padding: 10px;
+}
+
+.profile .col-qrcode p {
+    text-align: center;
+    font-style: italic;
 }
 
 .btn {
@@ -104,6 +118,10 @@ nav .navbar-brand h4 img {
 .badge-success {
     color: #fff;
     background-color: #28a745;
+}
+
+.tab-content h2 {
+    color: #1b00ff;
 }
 
 .tab-pane th {
@@ -156,26 +174,18 @@ nav .navbar-brand h4 img {
     }
 }
 
-@media screen and (max-width: 1200px) {
-    .profile .qrcode {
-        max-width: 60%;
-    }
-}
+@media screen and (max-width: 1200px) {}
 
 @media screen and (max-width: 991px) {
-    .profile .qrcode {
+    .profile .col-qrcode .qrcode {
         max-width: 40%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .profile .qrcode {
-        max-width: 40%;
-    }
-}
-
-@media screen and (max-width: 567px) {
-    .profile .qrcode {
+    .profile .col-qrcode .qrcode {
         max-width: 50%;
     }
 }
+
+@media screen and (max-width: 567px) {}

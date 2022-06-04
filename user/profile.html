@@ -78,8 +78,6 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="index.html" class="nav-item nav-link active"><i class="fa fa-home"></i> Home</a>
-                <!-- <a href="about.html" class="nav-item nav-link"><i class="fa fa-users"></i> About</a> -->
-                <!-- <a href="service.html" class="nav-item nav-link">Services</a> -->
                 <div class="nav-item dropdown has-megamenu">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                             class="fa fa-motorcycle"></i> Parking Providers</a>
@@ -122,7 +120,8 @@
                 </div>
                 <!-- <a href="contact.html" class="nav-item nav-link"><i class="fa fa-paper-plane"></i> Contact</a> -->
                 <div class="nav-item dropdown has-user-menu">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user"></i> User</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user"></i>
+                        User</a>
                     <div class="dropdown-menu dropdown-menu-right fade-up m-0 user-menu">
                         <a href="" class="dropdown-item">Login</a>
                         <a href="" class="dropdown-item">Register</a>
@@ -151,37 +150,52 @@
             <div class="tab-content p-1">
                 <div class="tab-pane container active profile" id="profile">
                     <div class="pb-4 pt-4">
-                        <h2>Your Information</h2>
+                        <h2 class="">// Your Information //</h2>
                     </div>
                     <div class="row g-4 mb-3 pb-3">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                             <h5 class="mb-2"><i class="fa fa-user"></i> Full Name</h5>
-                            <input type="text" class="mb-4 form-control" placeholder="Do Van Chien" disabled>
+                            <input type="text" class="mb-4 form-control" placeholder="Do Van Chien" readonly="true">
                             <h5 class="mb-2"><i class="fa fa-calendar-alt"></i> Date of Birth</h5>
-                            <input type="text" class="mb-4 form-control" placeholder="01/01/2001" disabled>
+                            <input type="text" class="mb-4 form-control" placeholder="01/01/2001" readonly="true">
                             <h5 class="mb-2"><i class="fa fa-address-book"></i> Address</h5>
-                            <input type="text" class="form-control" placeholder="590 CMT8, Phuong 10, Quan 3, Tp Ho Chi Minh" disabled>
+                            <input type="text" class="form-control" placeholder="590 CMT8, Phuong 10, Quan 3, Tp Ho Chi Minh" readonly="true">
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                             <h5 class="mb-2"><i class="fa fa-phone-alt"></i> Phone</h5>
-                            <input type="text" class="mb-4 form-control" placeholder="0123456789" disabled>
+                            <input type="text" class="mb-4 form-control" placeholder="0123456789" readonly="true">
                             <h5 class="mb-2"><i class="fa fa-envelope"></i> Email</h5>
-                            <input type="text" class="mb-4 form-control" placeholder="dovanchien@gmail.com" disabled>
+                            <input type="text" class="mb-4 form-control" placeholder="dovanchien@gmail.com" readonly="true">
                             <h5 class="mb-2"><i class="fa fa-address-card"></i> Identity Card</h5>
-                            <input type="text" class="mb-4 form-control" placeholder="3315628917" disabled>
+                            <input type="text" class="form-control" placeholder="3315628917" readonly="true">
                         </div>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-                            <img class="qrcode mb-3" src="img/qrcode.png" alt="">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-qrcode">
+                            <img class="qrcode mb-2" src="img/qrcode.png" />
+                            <p>Your QRCode</p>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                            <button type="button" class="btn btn-settings btn-primary mt-2 mb-2 me-2"><i class="fa fa-cogs"></i> Settings</button>
+                            <button type="button" class="btn btn-settings btn-primary mt-0 mb-2 me-2"><i class="fa fa-cogs"></i> Settings</button>
+                            <!-- <button type="button" class="btn btn-settings btn-danger mt-0 mb-2 me-2" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-qrcode"></i> QR Code</button> -->
                         </div>
                     </div>
+                    <!-- Modal -->
+                    <!-- <div class="modal fade col-qrcode" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img id="image" class="qrcode" src="img/qrcode.png" alt="Click on button" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
                 <div class="tab-pane container fade" id="recharge">
                     <div class="row g-4 mb-3 pb-3">
                         <div class="pb-1 pt-4">
-                            <h2>Recharge History</h2>
+                            <h2>// Recharge History //</h2>
                         </div>
                         <table class="table table-bordered table-responsive-md">
                             <thead>
@@ -230,7 +244,7 @@
                 <div class="tab-pane container fade" id="booking">
                     <div class="row g-4 mb-3 pb-3">
                         <div class="pb-1 pt-4">
-                            <h2>Booking History</h2>
+                            <h2>// Booking History //</h2>
                         </div>
                         <table class="table table-bordered table-responsive-md">
                             <thead>
@@ -285,7 +299,8 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>590 CMT8, Phuong 10, Quan 3, Tp Ho Chi Minh</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>590 CMT8, Phuong 10, Quan 3, Tp Ho Chi Minh
+                    </p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+123 345 6789</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>fptaptech@gmail.com.vn</p>
                     <div class="d-flex pt-2">
@@ -342,7 +357,7 @@
     </div>
     <!-- Footer End -->
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a> -->
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -354,8 +369,11 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Adding scripts to use bootstrap -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
 </body>
 
 </html>
