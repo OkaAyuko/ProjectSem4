@@ -1,7 +1,11 @@
 /* logo */
 
 nav .navbar-brand h4 img {
-    width: 70px;
+    width: 65px;
+}
+
+nav .navbar-brand h4 {
+    font-size: 24px;
 }
 
 
@@ -166,8 +170,8 @@ nav .navbar-brand h4 img {
     }
     .navbar-nav.navbar-center {
         position: absolute;
-        left: 60%;
-        transform: translatex(-60%);
+        left: 55%;
+        transform: translatex(-55%);
     }
 }
 
