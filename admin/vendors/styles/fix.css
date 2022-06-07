@@ -1,5 +1,5 @@
 .left-side-bar .brand-logo .light-logo {
-    width: 65px;
+    width: 70px;
     padding: 6px;
 }
 
@@ -10,17 +10,17 @@
 }
 
 .left-side-bar .brand-logo span {
-    font-size: 16px;
+    font-size: 1.4rem;
     padding: 3px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-weight: 800;
 }
 
 .login-page .brand-logo span,
 .login-header .brand-logo span {
-    font-size: 18px;
+    font-size: 1.4rem;
     padding: 3px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: #1b00ff;
     font-weight: 800;
 }
@@ -32,7 +32,7 @@
 .login-menu ul li a {
     border: 1.6px solid #1b00ff;
     padding: 10px 14px;
-    font-size: 18px;
+    font-size: 1rem;
     border-radius: 0.3rem;
 }
 
@@ -78,4 +78,8 @@
     .register-page-wrap .login-box {
         max-width: 450px;
     }
+}
+
+.invalid-feedback {
+    display: inline;
 }

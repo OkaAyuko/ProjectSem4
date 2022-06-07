@@ -4,23 +4,18 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <title>Register</title>
-    <!-- Site favicon -->
-    <!-- <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png"> -->
+    <title>ParkingGo | Register</title>
     <link rel="icon" type="image/png" href="vendors/images/icon.png">
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- Google Font -->
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
     <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-    <link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/jquery.steps.css">
     <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
     <link rel="stylesheet" type="text/css" href="vendors/styles/fix.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
     <script type="text/javascript" src="vendors/scripts/fix.js"></script>
 </head>
@@ -31,7 +26,7 @@
             <div class="brand-logo">
                 <a href="">
                     <img src="vendors/images/icon.png" alt="">
-                    <span>Parking Booking</span>
+                    <span>ParkingGo</span>
                 </a>
             </div>
             <div class="login-menu">
@@ -47,47 +42,55 @@
                 <div class="col-md-12 col-lg-12">
                     <div class="login-box bg-white box-shadow border-radius-10">
                         <div class="login-title">
-                            <h2 class="text-center text-primary">Register To Parking Booking</h2>
+                            <h2 class="text-center text-primary">Register To ParkingGo</h2>
                         </div>
                         <form>
                             <div class="row">
-                                <div class="col-12 col-md-4 col-lg-4">
+                                <div class="col-12 col-md-12 col-lg-12">
                                     <div class="input-group custom">
                                         <input type="text" class="form-control form-control-lg" placeholder="*Username">
-                                        <div class="input-group-append custom">
-                                            <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+                                        <div class="invalid-feedback">
+                                            <span>* Username cannot be left blank !</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4 col-lg-4">
+                                <div class="col-12 col-md-12 col-lg-12">
                                     <div class="input-group custom">
                                         <input type="password" class="form-control form-control-lg" placeholder="*Password">
-                                        <div class="input-group-append custom">
-                                            <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                        <div class="invalid-feedback">
+                                            <span>* Password cannot be left blank !</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4 col-lg-4">
+                                <div class="col-12 col-md-12 col-lg-12">
                                     <div class="input-group custom">
                                         <input type="password" class="form-control form-control-lg" placeholder="*Confirm Password">
-                                        <div class="input-group-append custom">
-                                            <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                        <div class="invalid-feedback">
+                                            <span>* Confirm Password cannot be left blank !</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-12 col-lg-12">
+                                <div class="col-12 col-md-6 col-lg-6">
                                     <div class="input-group custom">
                                         <input type="text" class="form-control form-control-lg" placeholder="*Full Name">
-                                        <div class="input-group-append custom">
-                                            <span class="input-group-text"><i class="dw dw-user1"></i></span>
+                                        <div class="invalid-feedback">
+                                            <span>* Full Name cannot be left blank !</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-12 col-lg-12">
+                                <div class="col-12 col-md-6 col-lg-6">
+                                    <div class="input-group custom">
+                                        <input type="text" class="form-control form-control-lg" placeholder="*Date of Birth">
+                                        <div class="invalid-feedback">
+                                            <span>* Date of Birth cannot be left blank !</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-6">
                                     <div class="input-group custom">
                                         <input type="text" class="form-control form-control-lg" placeholder="*Email">
-                                        <div class="input-group-append custom">
-                                            <span class="input-group-text"><i class="dw dw-email"></i></span>
+                                        <div class="invalid-feedback">
+                                            <span>* Email cannot be left blank !</span>
                                         </div>
                                     </div>
                                 </div>
@@ -95,16 +98,8 @@
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="input-group custom">
                                         <input type="text" class="form-control form-control-lg" placeholder="*Phone">
-                                        <div class="input-group-append custom">
-                                            <span class="input-group-text"><i class="dw dw-phone-call"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-6">
-                                    <div class="input-group custom">
-                                        <input type="text" class="form-control form-control-lg" placeholder="*Date of Birth">
-                                        <div class="input-group-append custom">
-                                            <span class="input-group-text"><i class="dw dw-calendar-11"></i></span>
+                                        <div class="invalid-feedback">
+                                            <span>* Phone cannot be left blank !</span>
                                         </div>
                                     </div>
                                 </div>
