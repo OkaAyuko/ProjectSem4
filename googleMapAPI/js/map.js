@@ -55,7 +55,7 @@ function Direction(place) {
         provideRouteAlternatives: true
     };
     dservie.route(req, function(result, status) {
-        if (status == "OK") display.setDirections(result);
+        if (status == "OK") ddisplay.setDirections(result);
     });
 }
 

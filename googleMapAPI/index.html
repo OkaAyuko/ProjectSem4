@@ -10,8 +10,9 @@
 </head>
 
 <body onload="showMap()">
-    <div id="search">Search Places:
-        <select name="" id="slPlaceTypes" onchange="FindPlaces(this.value)">
+    <div id="search" style="padding:10px;">
+        <!-- <label for="search" style="font-weight: bold; padding:10px;">Find Place:</label> -->
+        <select class="select-place" name="" id="slPlaceTypes" onchange="FindPlaces(this.value)">
             <option value="">Choose a place type</option>
             <option value="accounting">accounting</option>
             <option value="airport">airport</option>
