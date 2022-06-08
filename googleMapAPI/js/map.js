@@ -2,7 +2,7 @@ var map = null;
 var lat = 0;
 var long = 0;
 var infowindow = null;
-var arrMarkers = []
+var arrMarkers = [];
 
 function FindPlaces(type) {
     if (!type || type == "") return;
@@ -21,11 +21,7 @@ function FindPlaces(type) {
                 var place = result[i];
                 console.log(place);
                 var ico = {
-                    url: place.icon,
-                    size: new google.maps.Size(30, 30),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaleSize: new google.maps.Size(20, 20)
+                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                 }
                 var marker = new google.maps.Marker({
                     map: map,
@@ -38,12 +34,29 @@ function FindPlaces(type) {
                 google.maps.event.addListener(marker, 'click', function() {
                     inforwindow.setContent(this.content);
                     inforwindow.open(map, this);
+                    Direction(this.data);
                 });
                 arrMarkers.push(marker);
             }
         }
     });
+}
+var ddisplay = null;
 
+function Direction(place) {
+    var dservie = new google.maps.DirectionsService();
+    if (ddisplay) ddisplay.setMap(null);
+    ddisplay = new google.maps.DirectionsRenderer();
+    ddisplay.setMap(map);
+    var req = {
+        origin: { lat: lat, lng: long },
+        destination: place.geometry.location,
+        travelMode: "WALKING",
+        provideRouteAlternatives: true
+    };
+    dservie.route(req, function(result, status) {
+        if (status == "OK") display.setDirections(result);
+    });
 }
 
 function showMap() {
