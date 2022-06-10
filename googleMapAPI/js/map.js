@@ -66,7 +66,9 @@ function showMap() {
         long = pos.coords.longitude;
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: lat, lng: long },
-            zoom: 15
+            zoom: 15,
+            zoomControl: false,
+            scaleControl: true
         });
         var cp = new google.maps.Marker({
             position: { lat: lat, lng: long },
