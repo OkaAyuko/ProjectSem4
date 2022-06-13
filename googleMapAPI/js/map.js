@@ -27,7 +27,9 @@ function FindPlaces(type) {
                     map: map,
                     icon: ico,
                     title: place.name,
-                    content: '<strong>' + place.name + '</strong>' + '<br/>' + place.vicinity,
+                    content: '<div id="content">' +
+                        '<strong>' + place.name + '</strong>' + '<br/>' + place.vicinity +
+                        '</div>',
                     position: place.geometry.location,
                     data: place
                 });
@@ -51,8 +53,9 @@ function Direction(place) {
     var req = {
         origin: { lat: lat, lng: long },
         destination: place.geometry.location,
-        travelMode: "WALKING",
+        travelMode: "DRIVING",
         provideRouteAlternatives: true
+
     };
     dservie.route(req, function(result, status) {
         if (status == "OK") ddisplay.setDirections(result);
@@ -67,8 +70,7 @@ function showMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: lat, lng: long },
             zoom: 15,
-            zoomControl: false,
-            scaleControl: true
+            fullscreenControl: false
         });
         var cp = new google.maps.Marker({
             position: { lat: lat, lng: long },

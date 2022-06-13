@@ -10,27 +10,28 @@
 </head>
 
 <body onload="showMap()">
+    <div id="map"></div>
     <div id="search" style="padding:10px;">
         <!-- <label for="search" style="font-weight: bold; padding:10px;">Find Place:</label> -->
-        <select class="select-place" name="" id="slPlaceTypes" onchange="FindPlaces(this.value)">
-            <option value="">Choose a place type</option>
-            <option value="accounting">accounting</option>
-            <option value="airport">airport</option>
-            <option value="amusement_park">amusement_park</option>
-            <option value="aquarium">aquarium</option>
-            <option value="art_gallery">art_gallery</option>
-            <option value="atm">atm</option>
-            <option value="bakery">bakery</option>
-            <option value="bank">bank</option>
-            <option value="bar">bar</option>
-            <option value="beauty_salon">beauty_salon</option>
-            <option value="bicycle_store">bicycle_store</option>
-            <option value="book_store">book_store</option>
-            <option value="bowling_alley">bowling_alley</option>
-            <option value="bus_station">bus_station</option>
-            <option value="cafe">cafe</option>
-            <option value="campground">campground</option>
-            <option value="car_dealer">car_dealer</option>
+        <select class="select-place" name="" value="Choose a place type" id="slPlaceTypes" onchange="FindPlaces(this.value)">
+            <option selected value="">-- Chọn Nơi Tìm Kiếm --</option>
+            <option value="accounting">Kế Toán</option>
+            <option value="airport">Sân Bay</option>
+            <option value="amusement_park">Công Viên Giải Trí</option>
+            <option value="aquarium">Thủy Cung</option>
+            <option value="art_gallery">Triển Lãm Nghệ Thuật</option>
+            <option value="atm">Cây ATM</option>
+            <option value="bakery">Tiệm Bánh</option>
+            <option value="bank">Ngân Hàng</option>
+            <option value="bar">Quán Bar</option>
+            <option value="beauty_salon">Thẩm Mỹ Viện</option>
+            <option value="bicycle_store">Của Hàng Xe Đạp</option>
+            <option value="book_store">Cửa Hàng Sách</option>
+            <option value="bowling_alley">Sân Chơi Bowling</option>
+            <option value="bus_station">Trạm Xe Buýt</option>
+            <option value="cafe">Tiệm Cafe</option>
+            <option value="campground">Khu Cắm Trại</option>
+            <option value="car_dealer">Đại Lý Xe Hơi</option>
             <option value="car_rental">car_rental</option>
             <option value="car_repair">car_repair</option>
             <option value="car_wash">car_wash</option>
@@ -112,7 +113,6 @@
             <option value="zoo">zoo</option>
         </select>
     </div>
-    <div id="map"></div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhV4sgNAhuT-EchYl6tjM9L9FQqe5k9U&address=590%20cach%20mang%20thang%208&language=vi&fbclid=IwAR1zFsITJV9jYpjNzKuZWM67XCKZqD76bSYVRRLcKyOOvruSZ446LguY0Ew&libraries=places"></script>
     <script type="text/javascript" src="js/map.js"></script>
 </body>
