@@ -7,9 +7,9 @@ var arrMarkers = [];
 function FindPlaces(type) {
     if (!type || type == "") return;
     var req = {
-        location: { lat: lat, lng: long }, // trung tam vung tim kiem
-        radius: '10000', // ban kinh tim kiem (m)
-        type: type // loai dia diem can tim
+        location: { lat: lat, lng: long }, // center location
+        radius: '10000', // radius (m)
+        type: type // type
     }
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(req, function(result, status) {
@@ -47,7 +47,7 @@ var ddisplay = null;
 
 function Direction(place) {
     var dservie = new google.maps.DirectionsService();
-    if (ddisplay) ddisplay.setMap(null);
+    if (display) ddisplay.setMap(null);
     ddisplay = new google.maps.DirectionsRenderer();
     ddisplay.setMap(map);
     var req = {
@@ -55,7 +55,6 @@ function Direction(place) {
         destination: place.geometry.location,
         travelMode: "DRIVING",
         provideRouteAlternatives: true
-
     };
     dservie.route(req, function(result, status) {
         if (status == "OK") ddisplay.setDirections(result);
