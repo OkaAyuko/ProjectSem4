@@ -28,7 +28,8 @@ function FindPlaces(type) {
                     icon: ico,
                     title: place.name,
                     content: '<div id="content">' +
-                        '<strong>' + place.name + '</strong>' + '<br/>' + place.vicinity +
+                        '<strong>' + place.name + '</strong>' + '<br/>' + '<span>' + place.vicinity + '</span>' + '<br/>' +
+                        '<a href="" id="click-places">Chỉ Đường</a>' +
                         '</div>',
                     position: place.geometry.location,
                     data: place
@@ -36,18 +37,18 @@ function FindPlaces(type) {
                 google.maps.event.addListener(marker, 'click', function() {
                     inforwindow.setContent(this.content);
                     inforwindow.open(map, this);
-                    Direction(this.data);
+                    //Direction(this.data);
                 });
                 arrMarkers.push(marker);
             }
-        }
+        } else {}
     });
 }
 var ddisplay = null;
 
 function Direction(place) {
     var dservie = new google.maps.DirectionsService();
-    if (display) ddisplay.setMap(null);
+    if (ddisplay) ddisplay.setMap(null);
     ddisplay = new google.maps.DirectionsRenderer();
     ddisplay.setMap(map);
     var req = {
@@ -68,7 +69,7 @@ function showMap() {
         long = pos.coords.longitude;
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: lat, lng: long },
-            zoom: 15,
+            zoom: 14,
             fullscreenControl: false
         });
         var cp = new google.maps.Marker({

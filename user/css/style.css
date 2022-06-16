@@ -397,7 +397,12 @@
 /* logo navbar */
 
 nav .navbar-brand h4 img {
-    width: 70px;
+    width: 40px;
+}
+
+nav .navbar-brand .span-logo {
+    font-weight: 600;
+    font-size: 22px;
 }
 
 

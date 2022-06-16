@@ -31,5 +31,13 @@ body {
 }
 
 div#content {
-    max-width: 200px;
+    max-width: 250px;
+}
+
+div#content strong {
+    text-transform: capitalize;
+}
+
+div#content span {
+    padding-top: 20px;
 }
