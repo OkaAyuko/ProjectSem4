@@ -1,12 +1,12 @@
 .left-side-bar .brand-logo .light-logo {
-    width: 50px;
-    padding: 6px;
+    width: 40px;
+    padding: 0px;
 }
 
 .login-page .brand-logo img,
 .login-header .brand-logo img {
-    width: 90px;
-    padding: 6px;
+    width: 40px;
+    padding: 0px;
 }
 
 .left-side-bar .brand-logo span {
@@ -18,10 +18,9 @@
 .login-page .brand-logo span,
 .login-header .brand-logo span {
     font-size: 1.4rem;
-    padding: 3px;
-    text-transform: capitalize;
     color: #1b00ff;
     font-weight: 800;
+    margin-top: 24px;
 }
 
 .action-center button {
