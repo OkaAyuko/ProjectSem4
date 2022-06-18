@@ -21,7 +21,10 @@ function FindPlaces(type) {
                 var place = result[i];
                 console.log(place);
                 var ico = {
-                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                    url: "img/parking-marker.svg",
+                    size: new google.maps.Size(70, 70),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 32)
                 }
                 var marker = new google.maps.Marker({
                     map: map,
