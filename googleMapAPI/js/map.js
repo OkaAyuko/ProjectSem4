@@ -21,10 +21,8 @@ function FindPlaces(type) {
                 var place = result[i];
                 console.log(place);
                 var ico = {
-                    url: "img/parking-marker.svg",
-                    size: new google.maps.Size(70, 70),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(0, 32)
+                    // url: "img/parking-marker.svg",
+                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
                 }
                 var marker = new google.maps.Marker({
                     map: map,
@@ -40,7 +38,7 @@ function FindPlaces(type) {
                 google.maps.event.addListener(marker, 'click', function() {
                     inforwindow.setContent(this.content);
                     inforwindow.open(map, this);
-                    //Direction(this.data);
+                    Direction(this.data);
                 });
                 arrMarkers.push(marker);
             }
