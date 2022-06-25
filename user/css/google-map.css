@@ -1,0 +1,75 @@
+#map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#parking-form {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    position: absolute;
+    z-index: 1000;
+    width: 250px;
+    top: 0;
+    right: 0;
+    float: left;
+    padding: 0;
+}
+
+#parking-title {
+    position: relative;
+    color: #fff;
+    background-color: #1b00ff;
+    font-weight: 600;
+    padding: 6px;
+    border: 0;
+    text-transform: none;
+    text-align: center;
+    font-size: 18px;
+}
+
+#check-box {
+    padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    #parking-form {
+        width: 480px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #parking-form {
+        width: 380px;
+    }
+}
+
+@media screen and (max-width: 567px) {
+    #parking-form {
+        width: 280px;
+    }
+}
+
+.lable-all,
+.lable-only-parking {
+    padding: 2px;
+}
+
+.checkbox-only-parking {
+    margin-left: 15px;
+}
+
+.set-window-content {
+    color: #333;
+}
+
+.set-window-content strong {
+    font-weight: bold;
+}
+
+.gm-style-iw-d {
+    max-width: 552px;
+}

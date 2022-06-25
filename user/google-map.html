@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ParkingGo | Index</title>
+    <title>ParkingGo | Google Map</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- Link Icon -->
     <link href="img/icon.png" rel="icon">
@@ -21,11 +21,23 @@
     <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/google-map.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Google Map Start -->
     <div id="map"></div>
+    <div id="parking-form">
+        <div id="parking-title">ParkingGo</div>
+        <form action="" id="check-box" name="">
+            <input type="checkbox" class="checkbox-all" name="" value="display-all">
+            <label for="" class="lable-all">Parking</label>
+            <input type="checkbox" class="checkbox-only-parking" name="" value="only-parking">
+            <label for="" class="lable-only-parking">10Km</label>
+            <div class="p-1"></div>
+            <input class="form-control" id="searchInput" type="text" placeholder="Search Location">
+        </form>
+    </div>
     <!-- Google Map End -->
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -41,6 +53,7 @@
     <!-- Main Javascript -->
     <script src="js/main.js"></script>
     <!-- Google Map -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhV4sgNAhuT-EchYl6tjM9L9FQqe5k9U&address=590%20cach%20mang%20thang%208&language=vi&fbclid=IwAR1zFsITJV9jYpjNzKuZWM67XCKZqD76bSYVRRLcKyOOvruSZ446LguY0Ew&libraries=places&callback=showMap&v=weekly"></script>
     <script src="js/map.js"></script>
 </body>
 
