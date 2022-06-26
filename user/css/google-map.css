@@ -82,3 +82,28 @@ option {
     padding: 0px 2px 1px;
     width: 100%;
 }
+
+#direction {
+    border: 1px solid #fff !important;
+    outline: 0 !important;
+    padding: 5px;
+    background-color: #1b00ff !important;
+    color: #fff !important;
+}
+
+#direction:hover {
+    background-color: #1502bd !important;
+}
+
+div#content {
+    max-width: 250px !important;
+}
+
+div#content strong {
+    text-transform: capitalize !important;
+    font-style: bold !important;
+}
+
+div#content span {
+    padding-top: 20px !important;
+}

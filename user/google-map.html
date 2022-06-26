@@ -33,12 +33,20 @@
             <input type="checkbox" class="checkbox-all" name="" value="display-all">
             <label for="" class="lable-all">Parking</label>
             <input type="checkbox" class="checkbox-only-parking" name="" value="only-parking">
-            <label for="" class="lable-only-parking">10Km</label>
+            <label for="" class="lable-10km">10Km</label>
             <div class="p-1"></div>
             <!-- <input class="form-control" id="searchInput" type="text" placeholder="Search Location"> -->
-            <select class="form-select" name="" id="">
-                <option selected value="">--- Tìm Kiếm ---</option>
-            </select>
+            <div id="search">
+                <select class="form-select" name="" id="" value="Choose a place type" id="slPlaceTypes" onchange="FindPlaces(this.value)">
+                    <option selected value="">-- Chọn Nơi Tìm Kiếm --</option>
+                    <option value="parking">Bãi Đậu Xe</option>
+                </select>
+            </div>
+            <div class="p-1"></div>
+            <div class="p-1">
+                <h6 class="text-primary">// Kết Quả //</h6>
+                <div id="output"></div>
+            </div>
         </form>
     </div>
     <!-- Google Map End -->
