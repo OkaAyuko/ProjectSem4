@@ -2207,17 +2207,18 @@ textarea.form-control-lg {
     border: 1px solid #ced4da;
     border-radius: 0px;
     appearance: none;
+    word-wrap: normal;
 }
 
 .form-select:focus {
-    border-color: #ec8992;
+    border-color: #1b00ff;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(216, 19, 36, 0.25);
+    -webkit-box-shadow: 0 0 28px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
 .form-select[multiple],
 .form-select[size]:not([size="1"]) {
-    padding-right: 0.75rem;
     background-image: none;
 }
 
@@ -2503,11 +2504,6 @@ textarea.form-control-lg {
     padding-bottom: 0.625rem;
 }
 
-.form-floating>.form-select {
-    padding-top: 1.625rem;
-    padding-bottom: 0.625rem;
-}
-
 .form-floating>.form-control:focus~label,
 .form-floating>.form-control:not(:placeholder-shown)~label,
 .form-floating>.form-select~label {
@@ -2528,16 +2524,7 @@ textarea.form-control-lg {
     width: 100%;
 }
 
-.input-group>.form-control,
-.input-group>.form-select {
-    position: relative;
-    flex: 1 1 auto;
-    width: 1%;
-    min-width: 0;
-}
-
-.input-group>.form-control:focus,
-.input-group>.form-select:focus {
+.input-group>.form-control:focus {
     z-index: 3;
 }
 

@@ -73,3 +73,12 @@
 .gm-style-iw-d {
     max-width: 552px;
 }
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 2em;
+    padding: 0px 2px 1px;
+    width: 100%;
+}
