@@ -53,13 +53,13 @@
     }
 }
 
+.form-parking {
+    padding: 10px 20px;
+}
+
 .lable-all,
 .lable-only-parking {
     padding: 2px;
-}
-
-.checkbox-only-parking {
-    margin-left: 15px;
 }
 
 .set-window-content {
