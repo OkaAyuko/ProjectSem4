@@ -107,3 +107,7 @@ div#content strong {
 div#content span {
     padding-top: 20px !important;
 }
+
+.text-parking-form {
+    font-style: bold;
+}

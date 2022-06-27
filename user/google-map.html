@@ -29,19 +29,21 @@
     <div id="map"></div>
     <div id="parking-form">
         <div id="parking-title">ParkingGo</div>
-        <form action="" id="" name="" class="p-2">
-            Bãi Đậu Xe: <input type="checkbox" id="checkbox-parking" class="checkbox-parking" name="" onclick="Places(this.value)" value="parking">
-            <div class="p-1"></div>
-            <!-- <input class="form-control" id="searchInput" type="text" placeholder="Search Location"> -->
-            <!-- <div id="search">
-                <select class="form-select" name="" id="" value="Choose a place type" id="slPlaceTypes" onchange="FindPlaces(this.value)">
-                    <option selected value="">-- Chọn Nơi Tìm Kiếm --</option>
-                    <option value="parking">Bãi Đậu Xe</option>
-                </select>
-            </div> -->
-            <div class="p-1">
-                <h6 class="text-primary">// Kết Quả //</h6>
-                <div id="output"></div>
+        <form action="" id="" name="" class="p-2 form-group">
+            <label for="" class="text-parking-form text-primary p-1">// Chọn Phương Tiện //</label>
+            <select name="" class="form-select" id="mode">
+                <option value="NOT_FOUND">--- Phương Tiện ---</option>
+                <option value="WALKING">Đi Bộ</option>
+                <option value="DRIVING">Xe Hơi</option>
+                <option value="BICYCLING">Xe Đạp</option>
+                <option value="MOTORCYCLE">Xe Máy</option>
+                <option value="TRANSIT">Tàu Điện</option>
+            </select>
+            <div class="p-2"></div>
+            <label for="" class="text-parking-form text-primary p-1">// Danh Sách Bãi Đậu Xe //</label>
+            <div class="list-item">
+                <div id="out-put">
+                </div>
             </div>
         </form>
     </div>
