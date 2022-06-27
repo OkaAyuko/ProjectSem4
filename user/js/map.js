@@ -75,7 +75,7 @@ function Places(type) {
             for (var i in result) {
                 if (checkbox.checked == true) {
                     var place = result[i];
-                    console.log(place);
+                    //console.log(place);
                     var ico = {
                         // url: "img/parking-marker.svg",
                         url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
