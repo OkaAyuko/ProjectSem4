@@ -8,7 +8,9 @@ var ddisplay = null;
 function Direction(place) {
     if (place == "") return;
     var dservie = new google.maps.DirectionsService();
-    if (ddisplay) ddisplay.setMap(null);
+    if (ddisplay) {
+        ddisplay.setMap(null);
+    }
     ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
     ddisplay.setMap(map);
     var req = {
@@ -28,14 +30,14 @@ function Direction(place) {
                 if (checkButton == "direction") {
                     const output = document.querySelector("#output");
                     output.innerHTML = "<div class='content-output'>Tên Đường: " + place.name +
-                        "<div class=''></div>Khoảng Cách: " + result.routes[0].legs[0].distance.text +
+                        "<div class=''></div>Khoảng Cách: " + (result.routes[0].legs[0].distance.value / 1000) + " km" +
                         "<div class=''></div>Thời Gian: " + result.routes[0].legs[0].duration.text + '</div>';
+                    console.log(result);
                     ddisplay.setDirections(result);
                 } else {
                     ddisplay.setDirections({ routes: [] });
                 }
             });
-
         }
     });
 }
@@ -69,8 +71,11 @@ function Places(type) {
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(req, function(result, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK && result && result.length > 0) {
-            for (var i in arrMarkers)
+            // for arrMarkers set map null -> display null
+            for (var i in arrMarkers) {
                 arrMarkers[i].setMap(null);
+            }
+            // []
             arrMarkers = [];
             for (var i in result) {
                 if (checkbox.checked == true) {
