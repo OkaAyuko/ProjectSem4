@@ -2,7 +2,7 @@ var map = null;
 var lat = 0;
 var long = 0;
 var infowindow = null;
-var ddisplay = null;
+var ddisplay;
 var parkingLocations = [{
         "name": "Bãi giữ xe",
         "address": "Cách Mạng Tháng Tám, Phường 15, Quận 10, Thành phố Hồ Chí Minh, Việt Name",
@@ -51,7 +51,7 @@ var parkingLocations = [{
 function showPlace() {
     var markerParking, i
     for (var i in parkingLocations) {
-        console.log(parkingLocations[i]);
+        //console.log(parkingLocations[i]);
         var iconParking = {
             url: "img/marker.png",
             scaledSize: new google.maps.Size(45, 45),
@@ -67,7 +67,6 @@ function showPlace() {
                 '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
                 '<button id="direction" name="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
         });
-
         google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
             return function() {
                 inforwindow.setContent(this.content);
@@ -81,15 +80,16 @@ function showPlace() {
 
 function showDirection(data) {
     var dservice = new google.maps.DirectionsService();
-    if (ddisplay) {
+    if (ddisplay != null) {
         ddisplay.setMap(null);
+        ddisplay = null;
     }
     ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
     ddisplay.setMap(map);
     var req = {
         origin: { lat: lat, lng: long },
         destination: data,
-        travelMode: 'DRIVING',
+        travelMode: "DRIVING",
         provideRouteAlternatives: true,
     }
     dservice.route(req, function(result, status) {
@@ -100,11 +100,8 @@ function showDirection(data) {
                     ddisplay.setDirections(result);
                 }
             })
-
         }
     });
-
-
 }
 
 function showMap() {
@@ -123,5 +120,4 @@ function showMap() {
         })
         showPlace();
     })
-
 }
