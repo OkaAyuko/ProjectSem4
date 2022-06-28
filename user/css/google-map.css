@@ -111,3 +111,11 @@ div#content span {
 .text-parking-form {
     font-style: bold;
 }
+
+input[name="distance"]:focus,
+input[name="duration"]:focus,
+input[name="distance"],
+input[name="duration"] {
+    outline: none;
+    border: 0;
+}

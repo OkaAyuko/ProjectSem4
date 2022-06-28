@@ -3,6 +3,7 @@ var lat = 0;
 var long = 0;
 var infowindow = null;
 var ddisplay = null;
+var dservice = null;
 var parkingLocations = [{
         "name": "Bãi giữ xe",
         "address": "Cách Mạng Tháng Tám, Phường 15, Quận 10, Thành phố Hồ Chí Minh, Việt Name",
@@ -44,12 +45,28 @@ var parkingLocations = [{
         "address": "177 Đ. Cao Thắng, Phường 12, Quận 10, Thành phố Hồ Chí Minh, Việt Nam",
         "lat": 10.774602038976802,
         "long": 106.67606315432558,
-    }
+    },
+    {
+        "name": "Bãi giữ xe Thái",
+        "address": "Đường Trục, Tổ 5, Bình Chánh, Thành phố Hồ Chí Minh, Việt Nam",
+        "lat": 10.804105422754187,
+        "long": 106.56876503892447,
+    },
+    {
+        "name": "Bãi giữ xe ô tô 24/24",
+        "address": "2A4 Quách Điêu, Vĩnh Lộc A, Bình Chánh, Thành phố Hồ Chí Minh, Việt Nam",
+        "lat": 10.829448363525294,
+        "long": 106.57226481009462,
+    },
 ]
 
 
 function showPlace() {
     var markerParking, i
+    var req = {
+        location: { lat: lat, lng: long },
+        radius: '10000'
+    }
     for (var i in parkingLocations) {
         //console.log(parkingLocations[i]);
         var iconParking = {
@@ -65,7 +82,7 @@ function showPlace() {
             content: '<div id="content">' +
                 '<strong style="font-weight:600;">' + parkingLocations[i]['name'] + '</strong>' +
                 '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
-                '<button id="direction" name="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
+                '<button id="direction" name="direction refresh-button">Chỉ Đường <i class="fas fa-directions"></i></button>',
         });
         google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
             return function() {
@@ -77,28 +94,35 @@ function showPlace() {
     }
 }
 
+
 function showDirection(data) {
-    var dservice = new google.maps.DirectionsService();
-    if (ddisplay || ddisplay == "") ddisplay.setMap(null);
-    ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
+    var selectedMode = document.getElementById('mode').value;
+    if (ddisplay || dservice) {
+        ddisplay.setMap(null);
+    } else {
+        dservice = new google.maps.DirectionsService();
+        ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
+    }
     ddisplay.setMap(map);
-    var req = {
+    dservice.route({
         origin: { lat: lat, lng: long },
         destination: data,
-        travelMode: 'DRIVING',
+        travelMode: google.maps.TravelMode[selectedMode],
         provideRouteAlternatives: true,
-    }
-    dservice.route(req, function(result, status) {
+        unitSystem: google.maps.UnitSystem.IMPERIAL
+    }, function(result, status) {
         if (status == "OK") {
             $('button').on('click', function() {
                 var btnDirection = (this.id);
                 if (btnDirection == "direction") {
                     ddisplay.setDirections(result);
+                    document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000) + ' km');
+                    document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
                 }
             })
         }
-    });
 
+    });
 }
 
 function showMap() {
