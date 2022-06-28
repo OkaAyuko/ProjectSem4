@@ -51,7 +51,7 @@ var parkingLocations = [{
 function showPlace() {
     var markerParking, i
     for (var i in parkingLocations) {
-        //console.log(parkingLocations[i]);
+        console.log(parkingLocations[i]);
         var iconParking = {
             url: "img/marker.png",
             scaledSize: new google.maps.Size(45, 45),
@@ -74,7 +74,6 @@ function showPlace() {
                 showDirection(this.position);
             }
         })(markerParking, i));
-
     }
 }
 
@@ -86,10 +85,23 @@ function showDirection(data) {
     }
     ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
     ddisplay.setMap(map);
+
+    var selectMode = document.getElementById("mode");
+
+    switch (selectMode) {
+        case "DRIVING":
+            "DRIVING";
+            break;
+        case "TRANSIT":
+            "TRANSIT";
+            break;
+
+    }
+
     var req = {
         origin: { lat: lat, lng: long },
         destination: data,
-        travelMode: "DRIVING",
+        travelMode: 'DRIVING',
         provideRouteAlternatives: true,
     }
     dservice.route(req, function(result, status) {
