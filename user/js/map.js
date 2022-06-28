@@ -2,7 +2,7 @@ var map = null;
 var lat = 0;
 var long = 0;
 var infowindow = null;
-var ddisplay;
+var ddisplay = null;
 var parkingLocations = [{
         "name": "Bãi giữ xe",
         "address": "Cách Mạng Tháng Tám, Phường 15, Quận 10, Thành phố Hồ Chí Minh, Việt Name",
@@ -51,7 +51,7 @@ var parkingLocations = [{
 function showPlace() {
     var markerParking, i
     for (var i in parkingLocations) {
-        console.log(parkingLocations[i]);
+        //console.log(parkingLocations[i]);
         var iconParking = {
             url: "img/marker.png",
             scaledSize: new google.maps.Size(45, 45),
@@ -79,25 +79,9 @@ function showPlace() {
 
 function showDirection(data) {
     var dservice = new google.maps.DirectionsService();
-    if (ddisplay != null) {
-        ddisplay.setMap(null);
-        ddisplay = null;
-    }
+    if (ddisplay || ddisplay == "") ddisplay.setMap(null);
     ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
     ddisplay.setMap(map);
-
-    var selectMode = document.getElementById("mode");
-
-    switch (selectMode) {
-        case "DRIVING":
-            "DRIVING";
-            break;
-        case "TRANSIT":
-            "TRANSIT";
-            break;
-
-    }
-
     var req = {
         origin: { lat: lat, lng: long },
         destination: data,
@@ -114,6 +98,7 @@ function showDirection(data) {
             })
         }
     });
+
 }
 
 function showMap() {
