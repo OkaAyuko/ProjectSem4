@@ -86,7 +86,6 @@ function showDirection(data) {
     }
     ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
     ddisplay.setMap(map);
-
     var req = {
         origin: { lat: lat, lng: long },
         destination: data,
