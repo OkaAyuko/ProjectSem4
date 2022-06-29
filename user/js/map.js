@@ -78,11 +78,14 @@ function showPlace() {
         markerParking = new google.maps.Marker({
             position: new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']),
             map: map,
+            title: parkingLocations[i]['name'],
             icon: iconParking,
             content: '<div id="content">' +
                 '<strong style="font-weight:600;">' + parkingLocations[i]['name'] + '</strong>' +
-                '<br/>' + parkingLocations[i]['address'],
+                '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
+                '<button class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
         });
+        console.log(markerParking);
         google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
             return function() {
                 inforwindow.setContent(this.content);
@@ -94,7 +97,7 @@ function showPlace() {
 }
 
 function showDirection(data) {
-    var selectedMode = document.getElementById('mode').value;
+    //var selectedMode = document.getElementById('mode').value;
     if (ddisplay || dservice) {
         ddisplay.setMap(null);
     } else {
@@ -105,14 +108,16 @@ function showDirection(data) {
     dservice.route({
         origin: { lat: lat, lng: long },
         destination: data,
-        travelMode: google.maps.TravelMode[selectedMode],
+        travelMode: 'DRIVING',
         provideRouteAlternatives: true,
         unitSystem: google.maps.UnitSystem.IMPERIAL
     }, function(result, status) {
         if (status == "OK") {
-            ddisplay.setDirections(result);
-            document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000) + ' km');
-            document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
+            $("button").on("click", function() {
+                ddisplay.setDirections(result);
+                document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000) + ' km');
+                document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
+            })
         }
     });
 }
