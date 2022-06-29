@@ -81,8 +81,7 @@ function showPlace() {
             icon: iconParking,
             content: '<div id="content">' +
                 '<strong style="font-weight:600;">' + parkingLocations[i]['name'] + '</strong>' +
-                '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
-                '<button id="direction" name="direction refresh-button">Chỉ Đường <i class="fas fa-directions"></i></button>',
+                '<br/>' + parkingLocations[i]['address'],
         });
         google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
             return function() {
@@ -93,7 +92,6 @@ function showPlace() {
         })(markerParking, i));
     }
 }
-
 
 function showDirection(data) {
     var selectedMode = document.getElementById('mode').value;
@@ -112,16 +110,10 @@ function showDirection(data) {
         unitSystem: google.maps.UnitSystem.IMPERIAL
     }, function(result, status) {
         if (status == "OK") {
-            $('button').on('click', function() {
-                var btnDirection = (this.id);
-                if (btnDirection == "direction") {
-                    ddisplay.setDirections(result);
-                    document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000) + ' km');
-                    document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
-                }
-            })
+            ddisplay.setDirections(result);
+            document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000) + ' km');
+            document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
         }
-
     });
 }
 
