@@ -83,7 +83,8 @@ option {
     width: 100%;
 }
 
-#direction {
+#direction,
+#location {
     border: 1px solid #fff !important;
     outline: 0 !important;
     padding: 5px;
@@ -91,7 +92,8 @@ option {
     color: #fff !important;
 }
 
-#direction:hover {
+#direction:hover,
+#location:hover {
     background-color: #1502bd !important;
 }
 

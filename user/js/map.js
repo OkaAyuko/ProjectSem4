@@ -4,6 +4,8 @@ var long = 0;
 var infowindow = null;
 var ddisplay = null;
 var dservice = null;
+var radius_circle = null;
+var markerArray = [];
 var parkingLocations = [{
         "name": "Bãi giữ xe",
         "address": "Cách Mạng Tháng Tám, Phường 15, Quận 10, Thành phố Hồ Chí Minh, Việt Name",
@@ -60,32 +62,26 @@ var parkingLocations = [{
     },
 ]
 
-
 function showPlace() {
-    var markerParking, i
-    var req = {
-        location: { lat: lat, lng: long },
-        radius: '10000'
-    }
+
     for (var i in parkingLocations) {
-        //console.log(parkingLocations[i]);
+        var markerParking, i;
         var iconParking = {
             url: "img/marker.png",
             scaledSize: new google.maps.Size(45, 45),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(0, 0)
         }
+
         markerParking = new google.maps.Marker({
             position: new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']),
             map: map,
-            title: parkingLocations[i]['name'],
             icon: iconParking,
             content: '<div id="content">' +
                 '<strong style="font-weight:600;">' + parkingLocations[i]['name'] + '</strong>' +
                 '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
                 '<button class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
         });
-        console.log(markerParking);
         google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
             return function() {
                 inforwindow.setContent(this.content);
@@ -97,7 +93,6 @@ function showPlace() {
 }
 
 function showDirection(data) {
-    //var selectedMode = document.getElementById('mode').value;
     if (ddisplay || dservice) {
         ddisplay.setMap(null);
     } else {
@@ -134,8 +129,14 @@ function showMap() {
         });
         var markerLocation = new google.maps.Marker({
             position: { lat: lat, lng: long },
-            map: map
-        })
+            map: map,
+        });
+        var title = '<div id="content">' + '<strong style="font-weight:600;">Vị trí của bạn</strong>' + '</div>'
+        google.maps.event.addListener(markerLocation, "click", (function() {
+            inforwindow.setContent(title);
+            inforwindow.open(map, markerLocation);
+        }));
         showPlace();
     })
+
 }
