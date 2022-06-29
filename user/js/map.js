@@ -62,34 +62,55 @@ var parkingLocations = [{
     },
 ]
 
-function showPlace() {
 
-    for (var i in parkingLocations) {
-        var markerParking, i;
-        var iconParking = {
-            url: "img/marker.png",
-            scaledSize: new google.maps.Size(45, 45),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(0, 0)
+function deg2rad(deg) {
+    return deg * (Math.PI / 180)
+}
+
+function showPlace(latpos, longpos) {
+    var latpos = latpos.toFixed(1);
+    var longpos = longpos.toFixed(1);
+    for (var i = 0; i < parkingLocations.length; i++) {
+        // check radius
+        var R = 6371;
+        var dLat = deg2rad(parkingLocations[i]['lat'].toFixed(1) - latpos);
+        var dLong = deg2rad(parkingLocations[i]['long'].toFixed(1) - longpos);
+        var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(latpos)) * Math.cos(deg2rad(parkingLocations[i]['lat'].toFixed(1))) *
+            Math.sin(dLong / 2) * Math.sin(dLong / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // distance in km
+        //console.log(d);
+        // show multiple marker
+        if (d < 10.000) {
+            var markerParking, i;
+            var iconParking = {
+                url: "img/marker.png",
+                scaledSize: new google.maps.Size(45, 45),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(0, 0)
+            }
+            markerParking = new google.maps.Marker({
+                position: new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']),
+                map: map,
+                icon: iconParking,
+                content: '<div id="content">' +
+                    '<strong style="font-weight:600;">' + parkingLocations[i]['name'] + '</strong>' +
+                    '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
+                    '<button class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
+            });
+            google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
+                return function() {
+                    inforwindow.setContent(this.content);
+                    inforwindow.open(map, markerParking);
+                    showDirection(this.position);
+                }
+            })(markerParking, i));
         }
 
-        markerParking = new google.maps.Marker({
-            position: new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']),
-            map: map,
-            icon: iconParking,
-            content: '<div id="content">' +
-                '<strong style="font-weight:600;">' + parkingLocations[i]['name'] + '</strong>' +
-                '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
-                '<button class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
-        });
-        google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
-            return function() {
-                inforwindow.setContent(this.content);
-                inforwindow.open(map, markerParking);
-                showDirection(this.position);
-            }
-        })(markerParking, i));
     }
+
 }
 
 function showDirection(data) {
@@ -109,6 +130,7 @@ function showDirection(data) {
     }, function(result, status) {
         if (status == "OK") {
             $("button").on("click", function() {
+                //console.log(result);
                 ddisplay.setDirections(result);
                 document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000) + ' km');
                 document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
@@ -136,7 +158,7 @@ function showMap() {
             inforwindow.setContent(title);
             inforwindow.open(map, markerLocation);
         }));
-        showPlace();
+        showPlace(this.lat, this.long);
     })
 
 }
