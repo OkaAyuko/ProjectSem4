@@ -81,7 +81,7 @@ function showPlace(latpos, longpos) {
             Math.sin(dLong / 2) * Math.sin(dLong / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c; // distance in km
-        //console.log(d);
+        // console.log(d);
         // show multiple marker
         if (d < 10.000) {
             var markerParking, i;
@@ -108,9 +108,7 @@ function showPlace(latpos, longpos) {
                 }
             })(markerParking, i));
         }
-
     }
-
 }
 
 function showDirection(data) {
