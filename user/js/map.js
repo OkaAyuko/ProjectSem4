@@ -63,27 +63,29 @@ var parkingLocations = [{
 ]
 
 
-function deg2rad(deg) {
-    return deg * (Math.PI / 180)
-}
-
 function showPlace(latpos, longpos) {
-    var latpos = latpos.toFixed(1);
-    var longpos = longpos.toFixed(1);
+    var latpos = latpos.toFixed(6);
+    var longpos = longpos.toFixed(7);
+    //console.log(latpos, longpos);
     for (var i = 0; i < parkingLocations.length; i++) {
+        var latParking = parkingLocations[i]['lat'].toFixed(6);
+        var longParking = parkingLocations[i]['long'].toFixed(7);
+        //console.log(latParking, longParking);
+        if ((latpos == latParking) && (longpos == longParking)) {
+            return 0;
+        }
         // check radius
+        //var R = 6371.0710;
         var R = 6371;
-        var dLat = deg2rad(parkingLocations[i]['lat'].toFixed(1) - latpos);
-        var dLong = deg2rad(parkingLocations[i]['long'].toFixed(1) - longpos);
-        var a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(deg2rad(latpos)) * Math.cos(deg2rad(parkingLocations[i]['lat'].toFixed(1))) *
-            Math.sin(dLong / 2) * Math.sin(dLong / 2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c; // distance in km
-        // console.log(d);
+        var radius = 10.000;
+        var dLat1 = latpos * (Math.PI / 180);
+        var dLat2 = latParking * (Math.PI / 180);
+        var difflat = (dLat2 - dLat1);
+        var difflon = (longParking - longpos) * (Math.PI / 180);
+        var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(dLat1) * Math.cos(dLat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
         // show multiple marker
-        if (d < 10.000) {
+        console.log(d);
+        if (d < radius) {
             var markerParking, i;
             var iconParking = {
                 url: "img/marker.png",
@@ -124,13 +126,15 @@ function showDirection(data) {
         destination: data,
         travelMode: 'DRIVING',
         provideRouteAlternatives: true,
-        unitSystem: google.maps.UnitSystem.IMPERIAL
+        unitSystem: google.maps.UnitSystem.IMPERIAL,
+        avoidTolls: true,
+        avoidHighways: false,
     }, function(result, status) {
         if (status == "OK") {
             $("button").on("click", function() {
                 //console.log(result);
                 ddisplay.setDirections(result);
-                document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000) + ' km');
+                document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000).toFixed(3) + ' km');
                 document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
             })
         }
