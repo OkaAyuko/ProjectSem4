@@ -185,8 +185,8 @@ function showDirection(data) {
                 buttonDirection = $(this).attr('id');
                 if (buttonDirection == "direction") {
                     ddisplay.setDirections(result);
-                    // document.getElementById("distance").setAttribute('value', 'Khoảng Cách: ' + (result.routes[0].legs[0].distance.value / 1000).toFixed(3) + ' km');
-                    // document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
+                    document.getElementById("distance").setAttribute('value', 'Quãng Đường: ' + (result.routes[0].legs[0].distance.value / 1000).toFixed(3) + ' km');
+                    document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
                 }
             })
         }
