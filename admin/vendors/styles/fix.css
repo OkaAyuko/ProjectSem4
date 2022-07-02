@@ -61,15 +61,16 @@
 }
 
 .qrcode {
-    max-width: 50%;
+    max-width: 100%;
     border: 1px solid #202020;
     padding: 10px;
+    align-items: center;
 }
 
 @media screen and (max-width:991px) {
-    .qrcode {
+    /* .qrcode {
         max-width: 25%;
-    }
+    } */
 }
 
 @media screen and (max-width:768px) {
