@@ -91,11 +91,11 @@
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-qrcode">
                             <img class="qrcode mb-2" src="img/qrcode.png" />
-                            <p>Your QRCode</p>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                            <button type="button" class="btn btn-settings btn-primary mt-0 mb-2 me-2"><i class="fa fa-cogs"></i> Settings</button>
-                            <!-- <button type="button" class="btn btn-settings btn-danger mt-0 mb-2 me-2" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-qrcode"></i> QR Code</button> -->
+                            <button type="button" id="edit" onclick="redisable()" class="btn btn-settings btn-primary mt-0 mb-2 me-2"><i class="fa fa-cog"></i> Update</button>
+                            <button type="button" id="save" style="display: none;" class="btn btn-success mt-0 mb-2 me-2"><i class="fa fa-check-circle"></i> Save</button>
+                            <button type="button" id="cancel" style="display:none;" class="btn btn-danger mt-0 mb-2 me-2"><i class="fa fa-arrow-left"></i><a class="a-cancel" href=""> Cancel</a></button>
                         </div>
                     </div>
                 </div>
@@ -279,6 +279,7 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Main Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/fix.js"></script>
 </body>
 
 </html>

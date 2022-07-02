@@ -557,6 +557,30 @@ nav .navbar-brand .span-logo {
     border-radius: 5px;
 }
 
+.a-cancel {
+    color: #fff !important;
+}
+
+.a-cancel:hover {
+    text-decoration: none;
+}
+
+#edit,
+#cancel,
+#save {
+    text-transform: capitalize;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 
 /* ============ Desktop View ============ */
 
