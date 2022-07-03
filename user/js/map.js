@@ -128,9 +128,10 @@ function showPlace(latpos, longpos) {
         var radius = 10.000;
         // show multiple marker
         if (cal < radius) {
-            exerciseItems += "<li><div class='shop-item'>" + "<a href=''>" + parkingLocations[i].name + "</a>" +
+            exerciseItems += "<li><div class='shop-item'>" + "<a>" + parkingLocations[i].name + "</a>" +
                 "<p>" + parkingLocations[i].address + "</p>" + "<p>" + "<i class='fa fa-road'></i> " + cal.toFixed(3) + " km" +
-                "<button type='button' value='1' class='direction' id='direction-list'><i class='fa fa-directions'></i> Chỉ Đường</button>" + "</p>" + "</div>" + "</li>";
+                "<button type='button' class='direction' id=''><i class='fa fa-directions'></i> Chỉ Đường</button>" + "</p>" + "</div>" + "</li>";
+            //console.log(req.des);
             var markerParking, i;
             var pos = new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']);
             // icon
@@ -149,17 +150,17 @@ function showPlace(latpos, longpos) {
                 content: '<div id="content-parking">' +
                     '<strong style="font-weight:600; font-size:14px;">' + parkingLocations[i]['name'] + '</strong>' +
                     '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
-                    '<button class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
+                    '<button type="button" class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
             });
             google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
                 return function() {
                     inforwindow.setContent(this.content);
                     inforwindow.open(map, markerParking);
                     showDirection(this.position);
+                    //console.log(this.position);
                 }
             })(markerParking, i));
         }
-
     }
     // display html list
     listItem.innerHTML = exerciseItems;
@@ -181,6 +182,7 @@ function showDirection(data) {
         unitSystem: google.maps.UnitSystem.IMPERIAL,
         avoidTolls: true,
         avoidHighways: false,
+        optimizeWaypoints: true
     }, function(result, status) {
         if (status == "OK") {
             $("#direction").on("click", function() {
