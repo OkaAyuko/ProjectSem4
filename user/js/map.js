@@ -99,38 +99,35 @@ var parkingLocations = [{
     },
 ]
 
+function calculate(lat1, lat2, long1, long2) {
+    if ((lat1 == lat2) && (long1 == long2)) {
+        return 0;
+    }
+    // var R = 6371.0710;
+    var R = 6371;
+    var dLat1 = lat1 * (Math.PI / 180);
+    var dLat2 = lat2 * (Math.PI / 180);
+    var difflat = (dLat2 - dLat1);
+    var difflon = (long2 - long1) * (Math.PI / 180);
+    var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(dLat1) * Math.cos(dLat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
+    return d;
+}
+
 function showPlace(latpos, longpos) {
     var latpos = latpos.toFixed(6);
     var longpos = longpos.toFixed(7);
-    let listItem = document.querySelector(".list-item");
-    let exerciseItems = "";
-    //console.log(latpos, longpos);
+    // console.log(latpos, longpos);
     for (var i = 0; i < parkingLocations.length; i++) {
         var latParking = parkingLocations[i]['lat'].toFixed(6);
         var longParking = parkingLocations[i]['long'].toFixed(7);
         //console.log(latParking, longParking);
-        if ((latpos == latParking) && (longpos == longParking)) {
-            return 0;
-        }
         // check radius
-        //var R = 6371.0710;
-        var R = 6371;
+        var cal = calculate(latpos, latParking, longpos, longParking);
         var radius = 10.000;
-        var dLat1 = latpos * (Math.PI / 180);
-        var dLat2 = latParking * (Math.PI / 180);
-        var difflat = (dLat2 - dLat1);
-        var difflon = (longParking - longpos) * (Math.PI / 180);
-        var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(dLat1) * Math.cos(dLat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
-        //console.log(d);
         // show multiple marker
-        if (d < radius) {
+        if (cal < radius) {
             var markerParking, i;
             var pos = new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']);
-            //console.log(pos);
-            // add list
-            exerciseItems += "<div class='card p-2'>" + "<h6 class='' style='font-style:bold;'>" + parkingLocations[i].name + "</h6>" +
-                "<p style='font-size:14px;'>" + parkingLocations[i].address + "</p>" + "<div style='font-size:12px;'><i class='fas fa-road'></i> " + d.toFixed(2) +
-                " km " + "</div>" + "</div><br/>";
             // icon
             var iconParking = {
                 url: "img/marker.png",
@@ -144,8 +141,8 @@ function showPlace(latpos, longpos) {
                 position: pos,
                 map: map,
                 icon: iconParking,
-                content: '<div id="content">' +
-                    '<strong style="font-weight:600;">' + parkingLocations[i]['name'] + '</strong>' +
+                content: '<div id="content-parking">' +
+                    '<strong style="font-weight:600; font-size:14px;">' + parkingLocations[i]['name'] + '</strong>' +
                     '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
                     '<button class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
             });
@@ -158,8 +155,6 @@ function showPlace(latpos, longpos) {
             })(markerParking, i));
         }
     }
-    // display html list
-    listItem.innerHTML = exerciseItems;
 }
 
 function showDirection(data) {
@@ -180,20 +175,27 @@ function showDirection(data) {
         avoidHighways: false,
     }, function(result, status) {
         if (status == "OK") {
-            $("button").on("click", function() {
+            $("#direction").on("click", function() {
                 //console.log(result);
-                buttonDirection = $(this).attr('id');
-                if (buttonDirection == "direction") {
-                    ddisplay.setDirections(result);
-                    document.getElementById("distance").setAttribute('value', 'Quãng Đường: ' + (result.routes[0].legs[0].distance.value / 1000).toFixed(3) + ' km');
-                    document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
-                }
-            })
+                ddisplay.setDirections(result);
+                document.getElementById("distance").setAttribute('value', 'Quãng Đường: ' + (result.routes[0].legs[0].distance.value / 1000).toFixed(3) + ' km');
+                document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
+            });
+        } else {
+            ddisplay.setDirections(null);
         }
     });
 }
 
-// show map
+
+function getPosition() {
+    if (!navigator.geolocation) {
+        window.alert("Your browser does not support geolocation feature !");
+    } else {
+        showMap();
+    }
+}
+
 function showMap() {
     inforwindow = new google.maps.InfoWindow();
     window.navigator.geolocation.getCurrentPosition(function(pos) {
@@ -209,11 +211,6 @@ function showMap() {
             position: { lat: lat, lng: long },
             map: map,
         });
-        var title = '<div id="content">' + '<strong style="font-weight:600;">Vị trí của bạn</strong>' + '</div>'
-        google.maps.event.addListener(markerLocation, "click", (function() {
-            inforwindow.setContent(title);
-            inforwindow.open(map, markerLocation);
-        }));
-        showPlace(this.lat, this.long);
-    })
+        showPlace(lat, long);
+    });
 }

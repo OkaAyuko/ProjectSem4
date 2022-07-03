@@ -1,192 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wrapper-google-map {
+    height: 100%;
+    width: 300px;
+    position: relative;
+}
+
+.wrapper-google-map .menu-btn {
+    position: absolute;
+    left: 195px;
+    top: 10px;
+    background: #fff;
+    color: black;
+    height: 40px;
+    width: 40px;
+    z-index: 9999;
+    box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px -1px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#btn:checked~.menu-btn {
+    left: 301px;
+    top: 13.8px;
+}
+
+.wrapper-google-map .menu-btn i {
+    position: absolute;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.wrapper-google-map .menu-btn i.fa-times {
+    opacity: 0;
+}
+
+#btn:checked~.menu-btn i.fa-times {
+    opacity: 1;
+    transform: rotate(-180deg);
+}
+
+#btn:checked~.menu-btn i.fa-bars {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+#btn:checked~#sidebar {
+    left: 0;
+}
+
+#sidebar .title {
+    background: #1b00ff;
+    border-bottom: 1px solid #1b00ff;
+    font-style: 'Arial', sans-serif !important;
+}
+
+#sidebar .title h4 {
+    line-height: 65px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.content-google-map {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: 100%;
+    text-align: center;
+}
+
 #map {
     width: 100%;
+    height: 100vh;
+}
+
+#sidebar {
+    position: fixed;
+    background: #fff;
     height: 100%;
-    position: absolute;
-}
-
-#parking-form {
-    border: none;
-    border-radius: 2px;
-    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
-    background-color: rgb(255, 255, 255);
-    margin: 10px;
-    position: absolute;
-    z-index: 1000;
-    width: 200px;
-    top: 0;
-    right: 0;
-    float: left;
-    padding: 0;
-}
-
-#parking-title {
-    position: relative;
-    color: #fff;
-    background-color: #1b00ff;
-    font-weight: 600;
-    padding: 6px;
-    border: 0;
-    text-transform: none;
-    text-align: center;
-    font-size: 18px;
-}
-
-#check-box {
-    padding: 10px;
-}
-
-.form-parking {
-    padding: 10px 20px;
-}
-
-.lable-all,
-.lable-only-parking {
-    padding: 2px;
-}
-
-.set-window-content {
-    color: #333;
-}
-
-.set-window-content strong {
-    font-weight: bold;
-}
-
-.gm-style-iw-d {
-    max-width: 552px;
-}
-
-option {
-    font-weight: normal;
-    display: block;
-    white-space: nowrap;
-    min-height: 2em;
-    padding: 0px 2px 1px;
-    width: 100%;
-}
-
-#direction,
-#location {
-    border: 1px solid #fff !important;
-    outline: 0 !important;
-    padding: 5px;
-    background-color: #1b00ff !important;
-    color: #fff !important;
-}
-
-#direction:hover,
-#location:hover {
-    background-color: #1502bd !important;
-}
-
-#direction-in-list {
-    background-color: #1b00ff !important;
-    border: none;
-    color: white !important;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-div#content {
-    max-width: 250px !important;
-}
-
-div#content strong {
-    text-transform: capitalize !important;
-    font-style: bold !important;
-}
-
-div#content span {
-    padding-top: 20px !important;
-}
-
-.text-parking-form {
-    font-style: bold;
-}
-
-input[name="distance"]:focus,
-input[name="duration"]:focus,
-input[name="distance"],
-input[name="duration"] {
-    outline: none;
-    border: 0;
-}
-
-.scroll-bg {
-    width: 100%;
-}
-
-.scroll-div {
-    width: 100%;
-    height: 270px;
-    overflow: hidden;
+    width: 320px;
+    left: -320px;
+    transition: all 0.3s ease;
     overflow-y: scroll;
-    scrollbar-width: thin;
 }
 
-.scroll-div::-webkit-scrollbar {
-    width: 5px;
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.1);
 }
 
-.scroll-div::-webkit-scrollbar-track {
-    background: #f1f1f1;
+::-webkit-scrollbar-thumb {
     border-radius: 10px;
+    background: #1b00ff;
 }
 
-.scroll-div::-webkit-scrollbar-thumb {
+.wrapper-google-map .location-btn {
+    position: absolute;
+    left: 240px;
+    top: 10px;
+}
+
+.wrapper-google-map .location-btn button {
+    background: #fff;
+    color: black;
+    height: 40px;
+    width: 40px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px -1px;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content-parking {
+    max-width: 250px;
+    text-align: left;
+    color: #000000;
+}
+
+.gm-style-iw-c {
+    text-align: left;
+}
+
+#content-parking #direction {
     background-color: #1b00ff;
-    border-radius: 10px;
+    color: #fff;
+    border-radius: 2px;
+    border: 0;
+    outline: 0;
+    padding: 5px;
 }
 
-.scroll-div::-webkit-scrollbar-thumb:hover {
+#content-parking #direction:hover {
     background-color: #1502bd;
 }
 
-.scroll-div::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+#sidebar .form-direction input {
+    background-color: #1b00ff;
+    border: 0;
+    outline: 0;
+    color: #fff;
 }
 
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    border: none;
+#sidebar .form-direction input:focus {
+    outline: 0;
 }
 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-@media screen and (min-width: 768px) {
-    #parking-form {
-        width: 440px;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .scroll-div {
-        height: 270px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    #parking-form {
-        width: 360px;
-    }
-    .scroll-div {
-        height: 130px;
-    }
-}
-
-@media screen and (max-width: 567px) {
-    #parking-form {
-        width: 270px;
-    }
-    .scroll-div {
-        height: 145px;
-    }
+#sidebar .form-direction .form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }

@@ -93,9 +93,11 @@
                             <img class="qrcode mb-2" src="img/qrcode.png" />
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                            <button type="button" id="edit" onclick="redisable()" class="btn btn-settings btn-primary mt-0 mb-2 me-2"><i class="fa fa-cog"></i> Update</button>
-                            <button type="button" id="save" style="display: none;" class="btn btn-success mt-0 mb-2 me-2"><i class="fa fa-check-circle"></i> Save</button>
-                            <button type="button" id="cancel" style="display:none;" class="btn btn-danger mt-0 mb-2 me-2"><i class="fa fa-arrow-left"></i><a class="a-cancel" href=""> Cancel</a></button>
+                            <button type="button" id="edit" onclick="reDisable()" class="btn btn-settings btn-primary mt-0 mb-2 me-2 p-2"><i class="fa fa-cog"></i> Update</button>
+                            <!-- Edit End -->
+                            <!-- Save and Cancel Start -->
+                            <button type="button" id="save" class="btn btn-success mt-0 mb-2 me-2 p-2"><i class="fa fa-check-circle"></i> Save</button>
+                            <button type="button" id="cancel" class="btn btn-danger mt-0 mb-2 me-2 p-2"><i class="fa fa-arrow-left"></i><a class="a-cancel" href=""> Cancel</a></button>
                         </div>
                     </div>
                 </div>
@@ -104,54 +106,56 @@
                         <div class="pb-1 pt-4">
                             <h2>// Recharge History //</h2>
                         </div>
-                        <table class="table table-bordered table-responsive-md">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>19/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>19/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>15/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>12/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>8/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>1/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive-md">
+                            <table class="table table-bordered ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>19/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>19/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>15/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>12/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>8/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>1/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane container fade" id="booking">
@@ -159,54 +163,56 @@
                         <div class="pb-1 pt-4">
                             <h2>// Booking History //</h2>
                         </div>
-                        <table class="table table-bordered table-responsive-md">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>19/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>19/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>15/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>12/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>8/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Le Thi Rieng Parking Lot</td>
-                                    <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
-                                    <td>1/6/2022</td>
-                                    <td><span class="badge badge-success">Done !</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive-md">
+                            <table class="table table-bordered ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>19/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>19/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>15/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>12/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>8/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Le Thi Rieng Parking Lot</td>
+                                        <td>Cach Mang Thang 8, Ward 15, District 10, Ho Chi Minh City, Vietnam</td>
+                                        <td>1/6/2022</td>
+                                        <td><span class="badge badge-success">Done !</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
