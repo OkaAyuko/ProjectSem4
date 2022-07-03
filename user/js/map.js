@@ -116,6 +116,8 @@ function calculate(lat1, lat2, long1, long2) {
 function showPlace(latpos, longpos) {
     var latpos = latpos.toFixed(6);
     var longpos = longpos.toFixed(7);
+    let listItem = document.querySelector(".list-items");
+    let exerciseItems = "";
     // console.log(latpos, longpos);
     for (var i = 0; i < parkingLocations.length; i++) {
         var latParking = parkingLocations[i]['lat'].toFixed(6);
@@ -126,6 +128,9 @@ function showPlace(latpos, longpos) {
         var radius = 10.000;
         // show multiple marker
         if (cal < radius) {
+            exerciseItems += "<li><div class='shop-item'>" + "<a href=''>" + parkingLocations[i].name + "</a>" +
+                "<p>" + parkingLocations[i].address + "</p>" + "<p>" + "<i class='fa fa-road'></i> " + cal.toFixed(3) + " km" +
+                "<button type='button' value='1' class='direction' id='direction-list'><i class='fa fa-directions'></i> Chỉ Đường</button>" + "</p>" + "</div>" + "</li>";
             var markerParking, i;
             var pos = new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']);
             // icon
@@ -154,7 +159,10 @@ function showPlace(latpos, longpos) {
                 }
             })(markerParking, i));
         }
+
     }
+    // display html list
+    listItem.innerHTML = exerciseItems;
 }
 
 function showDirection(data) {
@@ -176,7 +184,6 @@ function showDirection(data) {
     }, function(result, status) {
         if (status == "OK") {
             $("#direction").on("click", function() {
-                //console.log(result);
                 ddisplay.setDirections(result);
                 document.getElementById("distance").setAttribute('value', 'Quãng Đường: ' + (result.routes[0].legs[0].distance.value / 1000).toFixed(3) + ' km');
                 document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
