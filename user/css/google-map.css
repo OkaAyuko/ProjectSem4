@@ -151,8 +151,8 @@
     padding: 5px;
 }
 
-.shop-item .direction {
-    background-color: #1b00ff;
+.shop-item .booking-list {
+    background-color: #198754;
     color: #fff;
     border-radius: 2px;
     border: 0;
@@ -161,9 +161,12 @@
     float: right;
 }
 
-#content-parking .direction:hover,
-.shop-item .direction:hover {
+#content-parking .direction:hover {
     background-color: #1502bd;
+}
+
+.shop-item .booking-list:hover {
+    background-color: #157347;
 }
 
 #sidebar .form-direction input {
@@ -238,4 +241,12 @@
 
 #sidebar .list-items li a i {
     margin-right: 20px;
+}
+
+#sidebar .result-list {
+    padding-left: 1rem;
+    margin-top: 1rem;
+    font-size: 16px;
+    color: #1b00ff;
+    font-weight: 600;
 }
