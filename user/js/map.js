@@ -122,7 +122,7 @@ function showPlace(latpos, longpos) {
         var radius = 10.000;
         // show multiple marker
         if (cal < radius) {
-            exerciseItems += "<li'><div class='shop-item' id='shop-item'>" + "<a id='shop-item-name'>" + parkingLocations[i].name + "</a>" +
+            exerciseItems += "<li'><div class='shop-item' id='shop-item'>" + "<a href='#' id='shop-item-name'>" + parkingLocations[i].name + "</a>" +
                 "<p>" + parkingLocations[i].address + "</p>" + "<p>" + "<i class='fa fa-road'></i> " + cal.toFixed(3) + " km" +
                 "<button type='button' class='booking-list' id=''><i class='fas fa-parking'></i> Booking</button>" + "</p>" + "</div>" + "</li>";
             //console.log(req.des);
@@ -152,7 +152,6 @@ function showPlace(latpos, longpos) {
                     inforwindow.open(map, markerParking);
                     map.panTo(this.position);
                     showDirection(this.position);
-                    console.log(this.position);
                 }
             })(markerParking, i));
         }
@@ -169,10 +168,12 @@ function showPlace(latpos, longpos) {
                         map: map,
                         icon: iconParking,
                     });
-                    inforwindow.setContent('<div id="content-parking">' +
+                    var content = '<div id="content-parking">' +
                         '<strong style="font-weight:600; font-size:14px;">' + parkingLocations[i]['name'] + '</strong>' +
                         '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
-                        '<button type="button" class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>', );
+                        '<button type="button" class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>';
+
+                    inforwindow.setContent(content);
                     inforwindow.open(map, markerParking);
                     map.panTo(posI);
                     showDirection(posI);
