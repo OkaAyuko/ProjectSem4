@@ -490,7 +490,8 @@ nav .navbar-brand .span-logo {
     margin-right: auto;
     max-width: 45%;
     border: 1px solid #202020;
-    padding: 10px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .profile .col-qrcode p {
