@@ -8,96 +8,104 @@ var radius_circle = null;
 var buttonDirection;
 var markerArray = [];
 var parkingLocations = [{
-        "name": "Lê Thị Riêng",
-        "address": "Cách Mạng Tháng Tám, Phường 15, Quận 10, Thành phố Hồ Chí Minh, Việt Nam",
+        "name": "Le Thi Rieng Parking Lot",
+        "address": "Cach Mang Thang Tam, Ward 15, District 10, Ho Chi Minh City, Vietnam",
         "lat": 10.786140368621982,
         "long": 106.66553523925666,
     },
     {
-        "name": "Trường Sơn",
-        "address": "Trường Sơn, Phường 15, Quận 10, Thành phố Hồ Chí Minh, Việt Nam",
+        "name": "Truong Son Parking Lot",
+        "address": "Truong Son, Ward 15, District 10, Ho Chi Minh City, Vietnam",
         "lat": 10.783623768095028,
         "long": 106.66602110517302,
     },
     {
-        "name": "550 CMT8",
-        "address": "550 Đ. Cách Mạng Tháng 8, Phường 11, Quận 3, Thành phố Hồ Chí Minh, Việt Nam",
+        "name": "550 Street",
+        "address": "550 Street. Cach Mang Thang 8, Ward 11, District 3, Ho Chi Minh City, Vietnam",
         "lat": 10.785919366395701,
         "long": 106.66687897069089,
     },
     {
-        "name": "Bệnh Viện Thống Nhất",
-        "address": "669 Đ. Cách Mạng Tháng 8, Phường 6, Tân Bình, Thành phố Hồ Chí Minh, Việt Nam",
+        "name": "Thong Nhat Hospital",
+        "address": "669 Street. Cach Mang Thang 8, Ward 6, Tan Binh, Ho Chi Minh City, Vietnam",
         "lat": 10.792474542422955,
         "long": 106.65389890720036,
     },
     {
-        "name": "332 Cao Thắng",
-        "address": "332 Đ. Cao Thắng, Phường 12, Quận 10, Thành phố Hồ Chí Minh, Việt Nam",
+        "name": "332 Cao Thang",
+        "address": "332 Street. Cao Thang, Ward 12, District 10, Ho Chi Minh City, Vietnam",
         "lat": 10.775856472760822,
         "long": 106.66872907259513,
     },
+
     {
-        "name": "117 Cao Thắng",
-        "address": "177 Đ. Cao Thắng, Phường 12, Quận 10, Thành phố Hồ Chí Minh, Việt Nam",
-        "lat": 10.77460735384704,
-        "long": 106.67606615637462,
-    },
-    {
-        "name": "Tổ 5 Bình Chánh",
-        "address": "Đường Trục, Tổ 5, Bình Chánh, Thành phố Hồ Chí Minh, Việt Nam",
-        "lat": 10.804105422754187,
-        "long": 106.56876503892447,
-    },
-    {
-        "name": "2A4 Quách Điêu",
-        "address": "2A4 Quách Điêu, Vĩnh Lộc A, Bình Chánh, Thành phố Hồ Chí Minh, Việt Nam",
-        "lat": 10.829448363525294,
-        "long": 106.57226481009462,
-    },
-    {
-        "name": "244B BHHB",
-        "address": "336 Liên Khu 4-5, Bình Hưng Hoà B, Bình Tân, Thành phố Hồ Chí Minh, Việt Nam",
-        "lat": 10.803836157761179,
-        "long": 106.5833460898702,
-    },
-    {
-        "name": "47/8 Bình Thành",
-        "address": "47/8 Bình Thành, Bình Hưng Hoà B, Bình Tân, Thành phố Hồ Chí Minh, Việt Nam",
-        "lat": 10.801606628483857,
-        "long": 106.58653293093546,
-    },
-    {
-        "name": "152 Bá Sơn",
-        "address": "152 Đ. Nguyễn Thị Tú, Bình Hưng Hoà B, Bình Tân, Thành phố Hồ Chí Minh, Việt Nam",
+        "name": "152 Ba Son",
+        "address": "152 Street. Nguyen Thi Tu, Binh Hung Hoa B, Binh Tan, Ho Chi Minh City, Vietnam",
         "lat": 10.815494097294602,
         "long": 106.59142729657972,
     },
     {
-        "name": "390 BHHB",
-        "address": "390 QL1A, Bình Hưng Hoà B, Bình Tân, Thành phố Hồ Chí Minh, Việt Nam",
-        "lat": 10.806340194668364,
-        "long": 106.59876903376622,
-    },
-    {
-        "name": "Khu Công Nghiệp Tân Bình",
-        "address": "Đường CN6, Sơn Kỳ, Tân Phú, Thành phố Hồ Chí Minh, Việt Nam",
+        "name": "Tan Binh Industrial Zone",
+        "address": "CN6 Road, Son Ky, Tan Phu, Ho Chi Minh City, Vietnam",
         "lat": 10.808647358759579,
         "long": 106.61051074577816,
     },
     {
-        "name": "Nhà Hàng Đông Phương 4",
-        "address": "309 Đông Hưng Thuận 29, Đông Hưng Thuận, Quận 12, Thành phố Hồ Chí Minh, Việt Nam",
+        "name": "Dong Phuong 4 Restaurant",
+        "address": "309 Dong Hung Thuan 29, Dong Hung Thuan, District 12, Ho Chi Minh City, Vietnam",
         "lat": 10.835440504398681,
         "long": 106.6285604770306,
     },
+
 ]
+
+function listElements(name, addr, calulate) {
+    const ul = document.querySelector('.list-items');
+    const li = document.createElement('li');
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    const address = document.createElement('p');
+    const radius = document.createElement('p');
+    const button = document.createElement('button');
+
+    // div 
+    div.classList.add('shop-item');
+    div.setAttribute('id', 'shop-item');
+
+    // name
+    a.innerHTML = name;
+    a.href = '#';
+    a.classList.add('shop-item-name');
+    a.setAttribute('id', 'shop-item-name');
+
+    // address
+    address.innerHTML = addr;
+
+    // radius
+    radius.innerHTML = calulate.toFixed(3) + ' km ';
+
+    // button booking
+    button.setAttribute('class', 'booking-list');
+    button.setAttribute('type', 'button');
+    button.innerHTML = 'Booking';
+
+    div.appendChild(a);
+    div.appendChild(address);
+    div.appendChild(radius);
+    radius.appendChild(button);
+    li.appendChild(div);
+    ul.appendChild(li);
+}
+
+function contentElement(name, address) {
+    return '<div id="content-parking">' + '<strong>' + name + '</strong>' + '<br/>' + address + '<div class="p-1"></div>' +
+        '<button type="button" class="direction" id="direction">Direction</button>';
+}
 
 function calculate(lat1, lat2, long1, long2) {
     if ((lat1 == lat2) && (long1 == long2)) {
         return 0;
     }
-    // var R = 6371.0710;
     var R = 6371;
     var dLat1 = lat1 * (Math.PI / 180);
     var dLat2 = lat2 * (Math.PI / 180);
@@ -110,8 +118,6 @@ function calculate(lat1, lat2, long1, long2) {
 function showPlace(latpos, longpos) {
     var latpos = latpos.toFixed(6);
     var longpos = longpos.toFixed(7);
-    let listItem = document.querySelector(".list-items");
-    let exerciseItems = "";
     // console.log(latpos, longpos);
     for (var i = 0; i < parkingLocations.length; i++) {
         var latParking = parkingLocations[i]['lat'].toFixed(6);
@@ -122,12 +128,9 @@ function showPlace(latpos, longpos) {
         var radius = 10.000;
         // show multiple marker
         if (cal < radius) {
-            exerciseItems += "<li'><div class='shop-item' id='shop-item'>" + "<a href='#' id='shop-item-name'>" + parkingLocations[i].name + "</a>" +
-                "<p>" + parkingLocations[i].address + "</p>" + "<p>" + "<i class='fa fa-road'></i> " + cal.toFixed(3) + " km" +
-                "<button type='button' class='booking-list' id=''><i class='fas fa-parking'></i> Booking</button>" + "</p>" + "</div>" + "</li>";
+            listElements(parkingLocations[i].name, parkingLocations[i].address, cal);
             //console.log(req.des);
             var markerParking, i;
-            var pos = new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']);
             // icon
             var iconParking = {
                 url: "img/marker.png",
@@ -136,15 +139,13 @@ function showPlace(latpos, longpos) {
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(17, 34),
             };
+            var contentOnMarker = contentElement(parkingLocations[i]['name'], parkingLocations[i]['address']);
             // create marker
             markerParking = new google.maps.Marker({
-                position: pos,
+                position: new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']),
                 map: map,
                 icon: iconParking,
-                content: '<div id="content-parking">' +
-                    '<strong style="font-weight:600; font-size:14px;">' + parkingLocations[i]['name'] + '</strong>' +
-                    '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
-                    '<button type="button" class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>',
+                content: contentOnMarker,
             });
             google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
                 return function() {
@@ -156,24 +157,21 @@ function showPlace(latpos, longpos) {
             })(markerParking, i));
         }
     }
-    // booking and show marker on list
+    // show place marker on listShop
     $(document).ready(function() {
         $('#shop-item #shop-item-name').click(function() {
             var idParking = this.textContent;
             for (var i in parkingLocations) {
                 if (idParking == parkingLocations[i]['name']) {
                     var posI = new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']);
+                    var contentOnShop = contentElement(parkingLocations[i]['name'], parkingLocations[i]['address']);
                     markerParking = new google.maps.Marker({
                         position: posI,
                         map: map,
                         icon: iconParking,
+                        content: contentOnShop
                     });
-                    var content = '<div id="content-parking">' +
-                        '<strong style="font-weight:600; font-size:14px;">' + parkingLocations[i]['name'] + '</strong>' +
-                        '<br/>' + parkingLocations[i]['address'] + '<div class="p-1"></div>' +
-                        '<button type="button" class="direction" id="direction">Chỉ Đường <i class="fas fa-directions"></i></button>';
-
-                    inforwindow.setContent(content);
+                    inforwindow.setContent(markerParking.content);
                     inforwindow.open(map, markerParking);
                     map.panTo(posI);
                     showDirection(posI);
@@ -181,8 +179,6 @@ function showPlace(latpos, longpos) {
             }
         });
     });
-    // display html list
-    listItem.innerHTML = exerciseItems;
 }
 
 function showDirection(data) {
@@ -206,8 +202,8 @@ function showDirection(data) {
         if (status == "OK") {
             $("#direction").on("click", function() {
                 ddisplay.setDirections(result);
-                document.getElementById("distance").setAttribute('value', 'Quãng Đường: ' + (result.routes[0].legs[0].distance.value / 1000).toFixed(3) + ' km');
-                document.getElementById("duration").setAttribute('value', 'Thời Gian: ' + result.routes[0].legs[0].duration.text);
+                document.getElementById("distance").setAttribute('value', 'Distance: ' + (result.routes[0].legs[0].distance.value / 1000).toFixed(3) + ' km');
+                document.getElementById("duration").setAttribute('value', 'Duration: ' + result.routes[0].legs[0].duration.text);
             });
         } else {
             ddisplay.setDirections(null);

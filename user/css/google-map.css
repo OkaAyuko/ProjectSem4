@@ -15,7 +15,7 @@
 
 .wrapper-google-map .menu-btn {
     position: absolute;
-    left: 195px;
+    left: 185px;
     top: 10px;
     background: #fff;
     color: black;
@@ -113,7 +113,7 @@
 
 .wrapper-google-map .location-btn {
     position: absolute;
-    left: 240px;
+    left: 230px;
     top: 10px;
 }
 
@@ -140,6 +140,11 @@
 
 .gm-style-iw-c {
     text-align: left;
+}
+
+#content-parking strong {
+    font-weight: 600;
+    font-size: 14px;
 }
 
 #content-parking .direction {
