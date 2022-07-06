@@ -3,7 +3,6 @@ var lat = 0;
 var long = 0;
 var infowindow = null;
 var ddisplay = null;
-var dservice = null;
 var radius_circle = null;
 var buttonDirection;
 var markerArray = [];
@@ -189,12 +188,12 @@ function showPlace(latpos, longpos) {
 
 function showDirection(data) {
     // delete
-    if (ddisplay || dservice) {
+    if (ddisplay) {
         ddisplay.setMap(null);
-    } else {
-        dservice = new google.maps.DirectionsService();
-        ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
     }
+    var dservice = new google.maps.DirectionsService();
+    ddisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
+
     ddisplay.setMap(map);
     dservice.route({
         origin: { lat: lat, lng: long },
@@ -233,7 +232,7 @@ function showMap() {
         long = pos.coords.longitude;
         map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: lat, lng: long },
-            zoom: 14,
+            zoom: 15,
             fullscreenControl: false,
             streetViewControl: false,
         });
