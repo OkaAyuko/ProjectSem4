@@ -56,6 +56,12 @@ var parkingLocations = [{
         "lat": 10.835440504398681,
         "long": 106.6285604770306,
     },
+    {
+        "name": "Hoang Nhu Parking Lot",
+        "address": "Tan Tao, Binh Tan, Ho Chi Minh City, Vietnam",
+        "lat": 10.763773372224323,
+        "long": 106.58615458756867,
+    }
 
 ]
 
