@@ -6,6 +6,7 @@ var ddisplay = null;
 var radius_circle = null;
 var buttonDirection;
 var markerArray = [];
+var markerLocation = null;
 var parkingLocations = [{
         "name": "Le Thi Rieng Parking Lot",
         "address": "Cach Mang Thang Tam, Ward 15, District 10, Ho Chi Minh City, Vietnam",
@@ -36,7 +37,6 @@ var parkingLocations = [{
         "lat": 10.775856472760822,
         "long": 106.66872907259513,
     },
-
     {
         "name": "152 Ba Son",
         "address": "152 Street. Nguyen Thi Tu, Binh Hung Hoa B, Binh Tan, Ho Chi Minh City, Vietnam",
@@ -203,7 +203,14 @@ function showDirection(data) {
         unitSystem: google.maps.UnitSystem.IMPERIAL,
         avoidTolls: true,
         avoidHighways: false,
-        optimizeWaypoints: true
+        optimizeWaypoints: true,
+        avoidTolls: true,
+        drivingOptions: {
+            departureTime: new Date(Date.now() + 10000),
+            trafficModel: 'bestguess'
+        },
+        unitSystem: google.maps.UnitSystem.METRIC
+
     }, function(result, status) {
         if (status == "OK") {
             $("#direction").on("click", function() {
@@ -212,34 +219,49 @@ function showDirection(data) {
                 document.getElementById("duration").setAttribute('value', 'Duration: ' + result.routes[0].legs[0].duration.text);
             });
         } else {
-            ddisplay.setDirections(null);
+            window.alert('Directions request failed due to ' + status);
         }
     });
 }
 
+
 function getPosition() {
-    if (!navigator.geolocation) {
-        window.alert("Your browser does not support geolocation feature !");
-    } else {
-        showMap();
-    }
+    navigator.geolocation.getCurrentPosition(function(position) {
+        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.setCenter(initialLocation);
+    });
 }
 
 function showMap() {
     inforwindow = new google.maps.InfoWindow();
-    window.navigator.geolocation.getCurrentPosition(function(pos) {
-        lat = pos.coords.latitude;
-        long = pos.coords.longitude;
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: lat, lng: long },
-            zoom: 15,
-            fullscreenControl: false,
-            streetViewControl: false,
+    if (!navigator.geolocation) {
+        window.alert("Your browser does not support geolocation feature !");
+    } else {
+        window.navigator.geolocation.getCurrentPosition(function(pos) {
+            lat = pos.coords.latitude;
+            long = pos.coords.longitude;
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: lat, lng: long },
+                zoom: 15,
+                fullscreenControl: false,
+                streetViewControl: false,
+            });
+            if (markerLocation) {
+                markerLocation.setPosition(lat, long)
+            }
+            markerLocation = new google.maps.Marker({
+                position: { lat: lat, lng: long },
+                map: map,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 10,
+                    fillOpacity: 1,
+                    strokeWeight: 2,
+                    fillColor: '#5384ED',
+                    strokeColor: '#ffffff',
+                },
+            });
+            showPlace(lat, long);
         });
-        var markerLocation = new google.maps.Marker({
-            position: { lat: lat, lng: long },
-            map: map,
-        });
-        showPlace(lat, long);
-    });
+    }
 }
