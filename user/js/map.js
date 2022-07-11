@@ -6,7 +6,6 @@ var ddisplay = null;
 var radius_circle = null;
 var buttonDirection;
 var markerArray = [];
-var markerLocation = null;
 var parkingLocations = [{
         "name": "Le Thi Rieng Parking Lot",
         "address": "Cach Mang Thang Tam, Ward 15, District 10, Ho Chi Minh City, Vietnam",
@@ -64,6 +63,7 @@ var parkingLocations = [{
 
 ]
 
+
 function listElements(name, addr, calulate) {
     const ul = document.querySelector('.list-items');
     const li = document.createElement('li');
@@ -71,8 +71,10 @@ function listElements(name, addr, calulate) {
     const a = document.createElement('a');
     const address = document.createElement('p');
     const radius = document.createElement('p');
-    const button = document.createElement('button');
-
+    const booking = document.createElement('a');
+    const row = document.createElement('div');
+    const col14 = document.createElement('div');
+    const col24 = document.createElement('div');
     // div 
     div.classList.add('shop-item');
     div.setAttribute('id', 'shop-item');
@@ -90,14 +92,29 @@ function listElements(name, addr, calulate) {
     radius.innerHTML = '<i class="fa fa-road"></i> ' + calulate.toFixed(3) + ' km ';
 
     // button booking
-    button.setAttribute('class', 'booking-list');
-    button.setAttribute('type', 'button');
-    button.innerHTML = '<i class="fa fa-parking"></i> ' + 'Booking';
+    booking.setAttribute('class', 'booking-list');
+    booking.setAttribute('type', 'button');
+    booking.innerHTML = 'Booking';
+    booking.href = '#';
+
+    // row 
+    row.classList.add('row');
+
+    // col14 
+    col14.classList.add('col-7');
+    col24.classList.add('col-5');
+    col14.classList.add('pt-2');
+    col24.classList.add('p-2');
 
     div.appendChild(a);
     div.appendChild(address);
-    div.appendChild(radius);
-    radius.appendChild(button);
+
+    div.appendChild(row);
+    row.appendChild(col14);
+    col14.appendChild(radius);
+    row.appendChild(col24);
+    col24.appendChild(booking);
+
     li.appendChild(div);
     ul.appendChild(li);
 }
@@ -154,15 +171,16 @@ function showPlace(latpos, longpos) {
             });
             google.maps.event.addListener(markerParking, "click", (function(markerParking, i) {
                 return function() {
+                    var sp1 = inforwindow.setPosition(this.position);
                     inforwindow.setContent(this.content);
-                    inforwindow.open(map, markerParking);
+                    inforwindow.open(map, sp1);
                     map.panTo(this.position);
                     showDirection(this.position);
                 }
             })(markerParking, i));
         }
     }
-    // show place marker on listShop
+
     $(document).ready(function() {
         $('#shop-item #shop-item-name').click(function() {
             var idParking = this.textContent;
@@ -170,14 +188,9 @@ function showPlace(latpos, longpos) {
                 if (idParking == parkingLocations[i]['name']) {
                     var posI = new google.maps.LatLng(parkingLocations[i]['lat'], parkingLocations[i]['long']);
                     var contentOnShop = contentElement(parkingLocations[i]['name'], parkingLocations[i]['address']);
-                    markerParking = new google.maps.Marker({
-                        position: posI,
-                        map: map,
-                        icon: iconParking,
-                        content: contentOnShop
-                    });
-                    inforwindow.setContent(markerParking.content);
-                    inforwindow.open(map, markerParking);
+                    var sp2 = inforwindow.setPosition(posI);
+                    inforwindow.setContent(contentOnShop);
+                    inforwindow.open(map, sp2);
                     map.panTo(posI);
                     showDirection(posI);
                 }
@@ -226,10 +239,14 @@ function showDirection(data) {
 
 
 function getPosition() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        map.setCenter(initialLocation);
-    });
+    if (!navigator.geolocation) {
+        window.alert("Your browser does not support geolocation feature !");
+    } else {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            map.panTo(initialLocation);
+        });
+    }
 }
 
 function showMap() {
@@ -246,22 +263,34 @@ function showMap() {
                 fullscreenControl: false,
                 streetViewControl: false,
             });
-            if (markerLocation) {
-                markerLocation.setPosition(lat, long)
-            }
-            markerLocation = new google.maps.Marker({
-                position: { lat: lat, lng: long },
-                map: map,
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 10,
-                    fillOpacity: 1,
-                    strokeWeight: 2,
-                    fillColor: '#5384ED',
-                    strokeColor: '#ffffff',
-                },
-            });
+            var markerLocation, k;
+            var lContent = currentContent();
+            setTimeout(function() {
+                markerLocation = new google.maps.Marker({
+                    position: { lat: lat, lng: long },
+                    map: map,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 8,
+                        fillOpacity: 1,
+                        strokeWeight: 2,
+                        fillColor: '#5384ED',
+                        strokeColor: '#ffffff',
+                    },
+                    /*animation: google.maps.Animation.BOUNCE*/
+                });
+                google.maps.event.addListener(markerLocation, "click", (function(markerLocation, k) {
+                    return function() {
+                        inforwindow.setContent(lContent);
+                        inforwindow.open(map, markerLocation);
+                    }
+                })(markerLocation, k));
+            }, 1500);
             showPlace(lat, long);
         });
     }
+}
+
+function currentContent() {
+    return "<strong class='currentLocation'>Your Current Location</strong>";
 }
