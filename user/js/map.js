@@ -7,30 +7,30 @@ var radius_circle = null;
 var buttonDirection;
 var markerArray = [];
 var markerLocation = null;
-const created = [];
+var INTERVAL = 2000;
 
-var pnChannel = "Channel-dtltj2wj3";
-var pnChannelDirection = "Channel-dtltj7wj8";
-var pubK = "pub-c-7f354b28-bcbb-4bee-a454-d50c82b0416b";
-var subK = "sub-c-6697145e-8335-490e-8f01-dc0547eb25d4";
-var uuid = "Client-7wib5";
-var uuidDirection = "Client-i1hu4";
+// var pnChannel = "Channel-dtltj2wj3";
+// var pnChannelDirection = "Channel-dtltj7wj8";
+// var pubK = "pub-c-7f354b28-bcbb-4bee-a454-d50c82b0416b";
+// var subK = "sub-c-6697145e-8335-490e-8f01-dc0547eb25d4";
+// var uuid = "Client-7wib5";
+// var uuidDirection = "Client-i1hu4";
 
-var pubnub = new PubNub({
-    publishKey: pubK,
-    subscribeKey: subK,
-    uuid: uuid
-});
+// var pubnub = new PubNub({
+//     publishKey: pubK,
+//     subscribeKey: subK,
+//     uuid: uuid
+// });
 
-var pubnubDirection = new PubNub({
-    publishKey: pubK,
-    subscribeKey: subK,
-    uuid: uuidDirection
-})
+// var pubnubDirection = new PubNub({
+//     publishKey: pubK,
+//     subscribeKey: subK,
+//     uuid: uuidDirection
+// })
 
-pubnub.subscribe({ channels: [pnChannel] });
+// pubnub.subscribe({ channels: [pnChannel] });
 
-pubnubDirection.subscribe({ channels: [pnChannelDirection] });
+// pubnubDirection.subscribe({ channels: [pnChannelDirection] });
 
 var parkingLocations = [{
         "name": "Le Thi Rieng Parking Lot",
@@ -224,7 +224,7 @@ function calculate(lat1, lat2, long1, long2) {
 function showPlace(latpos, longpos) {
     var latpos = latpos;
     var longpos = longpos;
-    // console.log(latpos, longpos);
+
     for (var i = 0; i < parkingLocations.length; i++) {
         var latParking = parkingLocations[i]['lat'].toFixed(6);
         var longParking = parkingLocations[i]['long'].toFixed(7);
@@ -257,6 +257,9 @@ function showPlace(latpos, longpos) {
                 var placePos = inforwindow.setPosition(this.position);
                 inforwindow.setContent(this.content);
                 inforwindow.open(map, placePos);
+                // inforwindow.setOptions({
+                //     pixelOffset: new google.maps.Size(5.55, -24.5)
+                // });
                 map.panTo(this.position);
                 showDirection(this.position);
             }
@@ -266,12 +269,6 @@ function showPlace(latpos, longpos) {
     $(document).ready(function() {
         // remainingArr = parkingLocations.filter(data => data.name != 'Le Thi Rieng Parking Lot');
         // console.log(remainingArr);
-        for (var i in parkingLocations) {
-
-            // } else if (cal > radius) {
-            //     listElements2(parkingLocations[i].name, parkingLocations[i].address, cal);
-            // }
-        }
         $('#shop-item #shop-item-name').click(function() {
             var idParking = this.textContent;
             for (var i in parkingLocations) {
@@ -280,7 +277,10 @@ function showPlace(latpos, longpos) {
                     var contentOnShop = contentElement(parkingLocations[i]['name'], parkingLocations[i]['address']);
                     var placeListPos = inforwindow.setPosition(posI)
                     inforwindow.setContent(contentOnShop);
-                    inforwindow.open(map, placeListPos);
+                    // inforwindow.setOptions({
+                    //     pixelOffset: new google.maps.Size(5.55, -24.5)
+                    // });
+                    inforwindow.open(map);
                     map.panTo(posI);
                     showDirection(posI);
                 }
@@ -329,19 +329,12 @@ function showDirection(data) {
     });
 }
 
-function getPosition() {
-    if (!navigator.geolocation) {
-        window.alert("Your browser does not support geolocation feature !");
-    } else {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            map.setCenter(initialLocation);
-        });
-    }
-}
 
 function showMap() {
     inforwindow = new google.maps.InfoWindow();
+    inforwindow.setOptions({
+        pixelOffset: new google.maps.Size(5.55, -24.5)
+    });
     window.navigator.geolocation.getCurrentPosition(function(pos) {
         lat = pos.coords.latitude;
         long = pos.coords.longitude;
@@ -354,6 +347,7 @@ function showMap() {
             fullscreenControl: false,
             streetViewControl: false,
         });
+
         markerLocation = new google.maps.Marker({
             position: { lat: lat, lng: long },
             map: map,
@@ -364,12 +358,15 @@ function showMap() {
                 strokeWeight: 2,
                 fillColor: '#5384ED',
                 strokeColor: '#ffffff',
-            },
+            }
         });
+        document.getElementById("getLocation").addEventListener("click", function() {
+            map.setCenter(markerLocation.position);
+        });
+        window.setTimeout(showMap, INTERVAL);
         // setInterval(function() {
         //     pubnub.publish({ channel: pnChannel, message: markerLocation.position });
         // }, 1200);
         showPlace(lat, long);
     });
-    //console.log(lat, long);
 }
