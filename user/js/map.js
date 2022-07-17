@@ -318,7 +318,7 @@ function showDirection(data) {
         if (status == "OK") {
             $("#direction").on("click", function() {
                 ddisplay.setDirections(result);
-                //console.log(result);
+                console.log(result);
                 document.getElementById("distance").setAttribute('value', 'Distance: ' + (result.routes[0].legs[0].distance.value / 1000) + ' km');
                 document.getElementById("duration").setAttribute('value', 'Duration: ' + (result.routes[0].legs[0].duration.text));
             });
