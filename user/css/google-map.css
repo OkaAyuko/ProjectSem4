@@ -176,7 +176,10 @@
     color: #fff !important;
     padding: 5px;
     font-weight: 500 !important;
-    font-size: 14px;
+    font-size: 12px;
+    width: 120px !important;
+    height: 35px !important;
+    float: right !important;
 }
 
 .shop-item .booking-list i {

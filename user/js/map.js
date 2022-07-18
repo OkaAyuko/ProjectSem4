@@ -9,146 +9,82 @@ var markerArray = [];
 var markerLocation = null;
 var INTERVAL = 2000;
 
-// var pnChannel = "Channel-dtltj2wj3";
-// var pnChannelDirection = "Channel-dtltj7wj8";
-// var pubK = "pub-c-7f354b28-bcbb-4bee-a454-d50c82b0416b";
-// var subK = "sub-c-6697145e-8335-490e-8f01-dc0547eb25d4";
-// var uuid = "Client-7wib5";
-// var uuidDirection = "Client-i1hu4";
-
-// var pubnub = new PubNub({
-//     publishKey: pubK,
-//     subscribeKey: subK,
-//     uuid: uuid
-// });
-
-// var pubnubDirection = new PubNub({
-//     publishKey: pubK,
-//     subscribeKey: subK,
-//     uuid: uuidDirection
-// })
-
-// pubnub.subscribe({ channels: [pnChannel] });
-
-// pubnubDirection.subscribe({ channels: [pnChannelDirection] });
-
 var parkingLocations = [{
         "name": "Le Thi Rieng Parking Lot",
         "address": "Cach Mang Thang Tam, Ward 15, District 10, Ho Chi Minh City, Vietnam",
         "lat": 10.786140368621982,
         "long": 106.66553523925666,
+        "seat": 20,
+        "remaining": 10
     },
     {
         "name": "Truong Son Parking Lot",
         "address": "Truong Son, Ward 15, District 10, Ho Chi Minh City, Vietnam",
         "lat": 10.783623768095028,
         "long": 106.66602110517302,
+        "seat": 30,
+        "remaining": 12
     },
     {
         "name": "550 Street",
         "address": "550 Street. Cach Mang Thang 8, Ward 11, District 3, Ho Chi Minh City, Vietnam",
         "lat": 10.785919366395701,
         "long": 106.66687897069089,
+        "seat": 25,
+        "remaining": 24
     },
     {
         "name": "Thong Nhat Hospital",
         "address": "669 Street. Cach Mang Thang 8, Ward 6, Tan Binh, Ho Chi Minh City, Vietnam",
         "lat": 10.792474542422955,
         "long": 106.65389890720036,
+        "seat": 22,
+        "remaining": 21
     },
     {
         "name": "332 Cao Thang",
         "address": "332 Street. Cao Thang, Ward 12, District 10, Ho Chi Minh City, Vietnam",
         "lat": 10.775856472760822,
         "long": 106.66872907259513,
+        "seat": 24,
+        "remaining": 8
     },
     {
         "name": "152 Ba Son",
         "address": "152 Street. Nguyen Thi Tu, Binh Hung Hoa B, Binh Tan, Ho Chi Minh City, Vietnam",
         "lat": 10.815494097294602,
         "long": 106.59142729657972,
+        "seat": 26,
+        "remaining": 4
     },
     {
         "name": "Tan Binh Industrial Zone",
         "address": "CN6 Road, Son Ky, Tan Phu, Ho Chi Minh City, Vietnam",
         "lat": 10.808647358759579,
         "long": 106.61051074577816,
+        "seat": 17,
+        "remaining": 5
     },
     {
         "name": "Dong Phuong 4 Restaurant",
         "address": "309 Dong Hung Thuan 29, Dong Hung Thuan, District 12, Ho Chi Minh City, Vietnam",
         "lat": 10.835440504398681,
         "long": 106.6285604770306,
+        "seat": 39,
+        "remaining": 9
     },
     {
         "name": "Hoang Nhu Parking Lot",
         "address": "Tan Tao, Binh Tan, Ho Chi Minh City, Vietnam",
         "lat": 10.763773372224323,
         "long": 106.58615458756867,
+        "seat": 33,
+        "remaining": 6
     }
 ]
 
-// function listElements2(name, addr, calulate) {
-//     const ul = document.querySelector('.list-items2');
-//     const li = document.createElement('li');
-//     const buttonRemove = document.createElement('button');
-//     const div = document.createElement('div');
-//     const a = document.createElement('a');
-//     const address = document.createElement('p');
-//     const radius = document.createElement('p');
-//     const button = document.createElement('a');
-//     const row = document.createElement('row');
-//     const col14 = document.createElement('col');
-//     const col24 = document.createElement('col');
-//     // div 
-//     div.classList.add('shop-item');
-//     div.setAttribute('id', 'shop-item');
 
-//     // button remove  
-//     buttonRemove.classList.add('remove-list-marker');
-//     buttonRemove.setAttribute('id', 'remove-list-marker');
-//     buttonRemove.innerHTML = '<i class="fa fa-times"></i>'
-
-//     // name
-//     a.innerHTML = name;
-//     a.href = '#';
-//     a.classList.add('shop-item-name');
-//     a.setAttribute('id', 'shop-item-name');
-
-//     // address
-//     address.innerHTML = addr;
-
-//     // radius
-//     radius.setAttribute('id', 'radius');
-//     radius.innerHTML = '<i class="fa fa-road"></i> ' + calulate.toFixed(3) + ' km ';
-
-//     // button booking
-//     button.setAttribute('class', 'booking-list');
-//     button.setAttribute('type', 'button');
-//     button.innerHTML = 'Booking';
-
-//     // row 
-//     row.classList.add('row');
-//     // col14 
-//     col14.classList.add('col-6');
-//     col14.classList.add('pt-2');
-//     // col24
-//     col24.classList.add('col-6');
-//     col24.classList.add('p-2');
-
-//     div.appendChild(buttonRemove);
-//     div.appendChild(a);
-//     div.appendChild(address);
-//     div.appendChild(row);
-//     row.appendChild(col14);
-//     col14.appendChild(radius);
-//     row.appendChild(col24);
-//     col24.appendChild(button)
-//     li.appendChild(div);
-//     ul.appendChild(li);
-// }
-
-function listElements(name, addr, calulate) {
+function listElements(name, addr, calulate, seat, remaining) {
     const ul = document.querySelector('.list-items');
     const li = document.createElement('li');
     const div = document.createElement('div');
@@ -159,6 +95,7 @@ function listElements(name, addr, calulate) {
     const row = document.createElement('row');
     const col14 = document.createElement('col');
     const col24 = document.createElement('col');
+    const nop = document.createElement('p');
     // div 
     div.classList.add('shop-item');
     div.setAttribute('id', 'shop-item');
@@ -176,6 +113,9 @@ function listElements(name, addr, calulate) {
     radius.setAttribute('id', 'radius');
     radius.innerHTML = '<i class="fa fa-road"></i> ' + calulate.toFixed(3) + ' km ';
 
+    nop.setAttribute('id', 'nop');
+    nop.innerHTML = '<i class="fa fa-chair"></i> ' + remaining + "/" + seat;
+
     // button booking
     button.setAttribute('class', 'booking-list');
     button.setAttribute('type', 'button');
@@ -188,13 +128,14 @@ function listElements(name, addr, calulate) {
     col14.classList.add('pt-2');
     // col24
     col24.classList.add('col-6');
-    col24.classList.add('p-2');
+    col24.classList.add('pt-4');
 
     div.appendChild(a);
     div.appendChild(address);
     div.appendChild(row);
     row.appendChild(col14);
     col14.appendChild(radius);
+    col14.appendChild(nop);
     row.appendChild(col24);
     col24.appendChild(button)
     li.appendChild(div);
@@ -231,7 +172,7 @@ function showPlace(latpos, longpos) {
         var cal = calculate(latpos, latParking, longpos, longParking);
         var radius = 10.000;
         if (cal < radius) {
-            listElements(parkingLocations[i].name, parkingLocations[i].address, cal);
+            listElements(parkingLocations[i].name, parkingLocations[i].address, cal, parkingLocations[i].seat, parkingLocations[i].remaining);
         }
 
         var markerParking, i;
