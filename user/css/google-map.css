@@ -177,7 +177,7 @@
     padding: 5px;
     font-weight: 500 !important;
     font-size: 12px;
-    width: 120px !important;
+    width: 100% !important;
     height: 35px !important;
     float: right !important;
 }
